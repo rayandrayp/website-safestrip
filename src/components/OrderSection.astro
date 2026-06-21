@@ -9,6 +9,9 @@ import {
   User,
   Mail,
   MessageSquare,
+  Phone,
+  Package,
+  ShoppingCart,
 } from "lucide-astro";
 
 const packages = [
@@ -39,54 +42,28 @@ const packages = [
 ];
 ---
 
-<section id="order" class="relative overflow-hidden py-24 ">
-  <!-- Background Decoration -->
-
-  <div
-    class="absolute inset-0 bg-gradient-to-b from-white via-violet-50/40 to-cyan-50/40"
-  >
-  </div>
-
-  <div
-    class="absolute left-0 top-0 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl"
-  >
-  </div>
-
-  <div
-    class="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl"
-  >
-  </div>
+<section id="order" class="relative overflow-hidden py-24">
+  <div class="absolute inset-0 bg-gradient-to-b from-white via-violet-50/40 to-cyan-50/40"></div>
+  <div class="absolute left-0 top-0 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl"></div>
 
   <div class="relative mx-auto max-w-7xl px-6">
-    <!-- Header -->
-
     <div class="mx-auto mb-16 max-w-3xl text-center">
-      <span
-        class="inline-flex items-center rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-700"
-      >
+      <span class="inline-flex items-center rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-700">
         Dapatkan Safestrip
       </span>
-
-      <h2
-        class="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl"
-      >
+      <h2 class="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
         Mulai Pantau Kesegaran
-        <span
-          class="bg-gradient-to-r from-violet-600 to-teal-600 bg-clip-text text-transparent"
-        >
+        <span class="bg-gradient-to-r from-violet-600 to-teal-600 bg-clip-text text-transparent">
           Secara Visual
         </span>
       </h2>
-
       <p class="mt-5 text-lg leading-relaxed text-slate-600">
-        Pilih paket yang sesuai kebutuhan Anda atau hubungi tim kami untuk pilot
-        testing, kolaborasi riset, dan kemitraan.
+        Pilih paket yang sesuai kebutuhan Anda atau hubungi tim kami untuk pilot testing, kolaborasi riset, dan kemitraan resmi.
       </p>
     </div>
 
-    <div class="grid gap-10 lg:grid-cols-2">
-      <!-- Pricing Cards -->
-
+    <div class="grid gap-10 lg:grid-cols-2 items-start">
       <div class="grid gap-6">
         {
           packages.map((item) => (
@@ -109,126 +86,155 @@ const packages = [
                   <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-cyan-100">
                     <item.icon class="h-6 w-6 text-violet-700" />
                   </div>
-
                   <div>
                     <h3 class="text-xl font-bold text-slate-900">
                       {item.title}
                     </h3>
-
                     <p class="mt-1 text-slate-500">{item.quantity}</p>
                   </div>
                 </div>
-
                 <div class="text-right">
                   <div class="text-2xl font-bold text-slate-900">
                     {item.price}
                   </div>
                 </div>
               </div>
-
               <p class="mt-4 leading-relaxed text-slate-600">{item.desc}</p>
             </div>
           ))
         }
-        <div class="flex flex-wrap gap-3">
-          <div
-            class="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm"
-          >
-            <ShieldCheck class="h-4 w-4 text-green-600" />
-            <span class="text-sm"> Aman untuk pangan </span>
-          </div>
-
-          <div
-            class="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm"
-          >
-            <Leaf class="h-4 w-4 text-green-600" />
-            <span class="text-sm"> Berbasis bahan alami </span>
-          </div>
-
-          <div
-            class="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm"
-          >
-            <BadgeCheck class="h-4 w-4 text-green-600" />
-            <span class="text-sm"> Mudah diaplikasikan </span>
-          </div>
+        <div class="flex flex-wrap justify-center gap-3 mt-2">
+            <div class="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm border border-slate-100">
+                <ShieldCheck class="h-4 w-4 text-emerald-600" />
+                <span class="text-sm font-medium text-slate-700">Food Grade</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm border border-slate-100">
+                <Leaf class="h-4 w-4 text-emerald-600" />
+                <span class="text-sm font-medium text-slate-700">Bahan Alami</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-sm border border-slate-100">
+                <BadgeCheck class="h-4 w-4 text-emerald-600" />
+                <span class="text-sm font-medium text-slate-700">Mudah diaplikasikan</span>
+            </div>
         </div>
       </div>
 
-      <!-- Contact Form -->
-
-      <div
-        class="rounded-[32px] border border-slate-200 bg-white/90 p-8 shadow-xl backdrop-blur"
-      >
-        <h3 class="text-2xl font-bold text-slate-900">Form Permintaan</h3>
-
-        <p class="mt-2 text-slate-600">
-          Isi formulir berikut dan tim Safestrip akan menghubungi Anda.
+      <div class="rounded-[32px] border border-slate-200 bg-white/90 p-8 shadow-xl backdrop-blur relative">
+        <h3 class="text-2xl font-bold text-slate-900">Form Pemesanan & Kemitraan</h3>
+        <p class="mt-2 text-slate-600 text-sm">
+          Lengkapi data di bawah ini. Tim kami akan segera memproses permintaan Anda melalui jalur distribusi resmi.
         </p>
 
         <form
           action="https://formspree.io/f/xjgqbrvk"
           method="POST"
-          class="mt-8 space-y-5"
+          class="mt-6 space-y-4"
         >
           <input type="hidden" name="_next" value="https://safestrip-three.vercel.app/#order">
-          
           <input type="text" name="_gotcha" style="display:none" />
 
           <div class="relative">
-            <User
-                class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
-            />
+            <User class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
             <input
-                type="text"
-                name="name"
-                placeholder="Nama Lengkap"
-                required
-                class="w-full rounded-2xl border border-slate-300 pl-12 pr-4 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
+              type="text"
+              name="nama_lengkap"
+              placeholder="Nama Lengkap"
+              required
+              class="w-full rounded-2xl border border-slate-300 pl-12 pr-4 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-slate-800 bg-white"
             />
           </div>
 
-          <div class="relative">
-            <Mail
-                class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
-            />
-            <input
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="relative">
+              <Mail class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Alamat Email"
                 required
-                class="w-full rounded-2xl border border-slate-300 pl-12 pr-4 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
-            />
+                class="w-full rounded-2xl border border-slate-300 pl-12 pr-4 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-slate-800 bg-white"
+              />
+            </div>
+            
+            <div class="relative">
+              <Phone class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <input
+                type="tel"
+                name="whatsapp"
+                placeholder="Nomor WhatsApp (Aktif)"
+                required
+                class="w-full rounded-2xl border border-slate-300 pl-12 pr-4 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-slate-800 bg-white"
+              />
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-3">
+            <div class="relative sm:col-span-2">
+              <Package class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 pointer-events-none" />
+              <select
+                name="pilihan_paket"
+                required
+                class="w-full rounded-2xl border border-slate-300 pl-12 pr-10 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-slate-700 bg-white appearance-none cursor-pointer"
+              >
+                <option value="" disabled selected>Pilih Paket</option>
+                <option value="Paket Personal (5 Strip)">Paket Personal (5 Strip)</option>
+                <option value="UMKM & Resto (10 Strip)">UMKM & Resto (10 Strip)</option>
+                <option value="Research Partner (Custom)">Research Partner (Custom)</option>
+              </select>
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </div>
+
+            <div class="relative">
+              <ShoppingCart class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 pointer-events-none" />
+              <input
+                type="number"
+                name="jumlah_pesanan"
+                placeholder="Jumlah"
+                min="1"
+                required
+                class="w-full rounded-2xl border border-slate-300 pl-12 pr-4 py-3 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-slate-800 bg-white"
+              />
+            </div>
           </div>
 
           <div class="relative">
-                <MessageSquare
-                    class="absolute left-4 top-4 h-5 w-5 text-slate-400 pointer-events-none"
-                />
-                <textarea
-                    rows="5"
-                    name="message"
-                    placeholder="Tuliskan kebutuhan atau pertanyaan Anda..."
-                    required
-                    class="w-full rounded-2xl border border-slate-300 bg-white py-3 pl-12 pr-4 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100"
-                ></textarea>
+            <MessageSquare class="absolute left-4 top-4 h-5 w-5 text-slate-400 pointer-events-none" />
+            <textarea
+              rows="4"
+              name="catatan"
+              placeholder="Catatan tambahan (Alamat pengiriman / detail riset khusus)..."
+              class="w-full rounded-2xl border border-slate-300 bg-white py-3 pl-12 pr-4 outline-none transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-slate-800"
+            ></textarea>
           </div>
 
           <button
             type="submit"
-            class="w-full rounded-2xl bg-gradient-to-r from-violet-600 to-teal-600 px-6 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+            class="w-full rounded-2xl bg-gradient-to-r from-violet-600 to-teal-600 px-6 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.01] hover:shadow-xl active:scale-[0.99]"
           >
-            Kirim Permintaan
+            Kirim Permintaan Pesanan
           </button>
         </form>
 
-        <div class="mt-6">
-          <a
-            href="https://wa.me/6285755554151"
-            target="_blank"
-            class="flex items-center justify-center rounded-2xl border border-green-300 bg-green-50 px-6 py-4 font-semibold text-green-700 transition hover:bg-green-100"
-          >
-            Chat via WhatsApp
-          </a>
+        <div class="mt-4 pt-4 border-t border-slate-100 text-center">
+          <p class="text-xs font-medium text-violet-600 bg-violet-50 inline-block py-1.5 px-4 rounded-full">
+            ⚡ Tim kami akan merespons dalam waktu 1x24 jam.
+          </p>
+          
+          <div class="mt-4">
+            <p class="text-xs text-slate-400 mb-2">Atau hubungi via chat interaktif:</p>
+            <a
+              href="https://wa.me/6285755554151"
+              target="_blank"
+              class="flex items-center justify-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50/60 px-6 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100 active:scale-[0.99]"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.93 0c3.165.001 6.14 1.233 8.377 3.469 2.237 2.235 3.469 5.211 3.469 8.378 0 6.534-5.337 11.883-11.87 11.883-2.001-.001-3.971-.51-5.713-1.479L0 24zm6.59-4.846c1.6.95 3.473 1.452 5.38 1.453h.005c5.454 0 9.895-4.442 9.898-9.896.002-2.642-1.03-5.125-2.895-6.995C17.062 1.836 14.583 1.05 11.93 1.05c-5.46 0-9.902 4.441-9.905 9.896-.001 1.993.521 3.942 1.51 5.67l-.102.553L2.395 21.61l4.368-1.144-.116-.712z"/>
+              </svg>
+              Konsultasi Instan via WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </div>

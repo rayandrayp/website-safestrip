@@ -4,21 +4,62 @@ const roadmap = [
   { q: "Q2 2025", title: "Uji Coba Lab", desc: "Pengujian akurasi pada 3 jenis daging & ikan." },
   { q: "Q3 2025", title: "Prototipe", desc: "Pengembangan prototipe strip pertama." },
   { q: "Q4 2025", title: "Pre-Launch", desc: "Submit proposal PKM & peluncuran website." },
-  { q: "Q1 2026", title: "Produksi", desc: "Produksi batch pertama (50 pack)." },
+  { q: "Q1 2026", title: "Produksi", desc: "Produksi batch pertama (500 pack)." },
   { q: "Q2 2026", title: "Sertifikasi", desc: "Pengurusan izin & sertifikasi BPOM." },
-  { q: "Q3 2026", title: "Distribusi", desc: "Ekspansi distribusi ke minimarket lokal." },
+  { q: "Q3 2026", title: "Distribusi", desc: "Ekspansi distribusi ke minimarket dan kemitraan B2B UMKM." },
 ];
 ---
 
 <section id="roadmap" class="py-24 bg-white overflow-hidden">
   <div class="mx-auto max-w-4xl px-6">
-    <div class="mb-16 text-center reveal-item">
+    
+    <!-- Header -->
+    <div class="mb-12 text-center reveal-item">
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-        Roadmap <span class="text-violet-600">Safestrip</span>
+        Roadmap & <span class="text-violet-600">Komersialisasi</span>
       </h2>
-      <p class="mt-4 text-slate-600">Perjalanan inovasi kami dalam menghadirkan keamanan pangan.</p>
+      <p class="mt-4 text-slate-600">Perjalanan inovasi kami dalam menghadirkan keamanan pangan dari lab ke pasar nyata.</p>
     </div>
 
+    <!-- Panel Proyeksi Keuangan (Sesuai Saran Juri PKM) -->
+    <div class="mb-16 bg-violet-50 rounded-3xl p-8 border border-violet-100 shadow-sm reveal-item relative overflow-hidden">
+      <!-- Aksen Visual -->
+      <div class="absolute -right-10 -top-10 w-32 h-32 bg-violet-200 rounded-full blur-3xl opacity-50"></div>
+      
+      <div class="relative z-10">
+        <h3 class="text-violet-900 font-bold text-lg mb-6 flex items-center gap-2">
+          <svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          Proyeksi Viabilitas Bisnis
+        </h3>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div class="bg-white p-4 rounded-xl border border-violet-100/50">
+            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Investasi Awal</p>
+            <p class="text-lg font-bold text-slate-900">Rp 10 Juta</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-violet-100/50">
+            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Target Produksi</p>
+            <p class="text-lg font-bold text-slate-900">500 <span class="text-sm font-medium text-slate-500">pack/bln</span></p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-violet-100/50">
+            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">HPP per Pack</p>
+            <p class="text-lg font-bold text-slate-900">Rp 8.000</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-violet-100/50 border-b-4 border-b-violet-500">
+            <p class="text-xs text-violet-600 font-semibold uppercase tracking-wider mb-1">Proyeksi BEP</p>
+            <p class="text-lg font-bold text-violet-700">Bulan ke-3</p>
+          </div>
+        </div>
+
+        <p class="text-sm text-violet-800 leading-relaxed font-medium bg-violet-100/50 inline-block py-2 px-4 rounded-lg">
+          "Dengan target produksi 500 pack per bulan dan margin keuntungan Rp 7.000/pack, kami memproyeksikan pencapaian <strong>BEP (Break Even Point) pada bulan ke-3</strong> operasional pasca-produksi dengan total kebutuhan investasi awal sebesar Rp 10.000.000."
+        </p>
+      </div>
+    </div>
+
+    <!-- Timeline Roadmap -->
     <div class="relative space-y-8 
         before:absolute before:top-0 before:h-full before:w-0.5 
         before:bg-gradient-to-b before:from-violet-200 before:via-violet-200 before:to-transparent
@@ -27,7 +68,7 @@ const roadmap = [
         
       {roadmap.map((item) => (
         <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-item">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-violet-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-violet-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
              <div class="w-2 h-2 rounded-full bg-white"></div>
           </div>
           
@@ -57,13 +98,19 @@ const roadmap = [
 </style>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.1 });
+  // Script untuk animasi scroll reveal
+  if (typeof window !== 'undefined') {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
 
-  document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
+    // Gunakan requestAnimationFrame untuk memastikan DOM sudah dirender
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
+    });
+  }
 </script>
