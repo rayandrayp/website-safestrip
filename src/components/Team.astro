@@ -1,0 +1,452 @@
+---
+
+interface Supervisor {
+  name: string;
+  title: string;
+  department: string;
+  faculty: string;
+  expertise: string;
+  bio: string;
+  initials: string;
+  nidn?: string;
+}
+
+interface Member {
+  name: string;
+  role: string;
+  contribution: string;
+  department: string;
+  year: string;
+  nim?: string;
+  bio: string;
+  initials: string;
+  domain: "science" | "design" | "business" | "engineering" | "science2";
+}
+
+const supervisor = {
+  name: "Mieke Alvionita, S.Pd., M.Si.",
+  title: "Dosen Pendamping",
+  department: "Universitas Negeri Malang",
+  faculty: "Pembimbing PKM Kewirausahaan",
+  expertise: "Kewirausahaan, Pengembangan Produk, dan Pendampingan Inovasi Mahasiswa",
+  bio: "Membimbing pengembangan bisnis, validasi model usaha, serta strategi komersialisasi Safestrip sebagai inovasi indikator kesegaran pangan berbasis bahan alami.",
+  initials: "MA",
+};
+
+const members = [
+  {
+    name: "Qonita Damara Antya Zayyan",
+    featured: true,
+    role: "Direktur Utama",
+    contribution: "Leadership & Business Strategy",
+    bio: "Memimpin keseluruhan pengembangan Safestrip, koordinasi tim, strategi bisnis, serta pengambilan keputusan utama dalam pengembangan produk dan komersialisasi.",
+    initials: "QD",
+    domain: "business",
+  },
+  {
+    name: "Nayla Sekar Ayu P.",
+    role: "Manajer Operasional",
+    contribution: "Operational Management",
+    bio: "Mengelola operasional harian tim, koordinasi aktivitas proyek, serta memastikan seluruh proses berjalan sesuai target dan timeline.",
+    initials: "NS",
+    domain: "engineering",
+  },
+  {
+    name: "Naishila Ayu Dwi S.",
+    role: "Manajer Produksi",
+    contribution: "Production & Quality Control",
+    bio: "Bertanggung jawab terhadap proses produksi Safestrip, pengendalian mutu produk, dan pengembangan prosedur produksi yang efisien.",
+    initials: "NA",
+    domain: "science",
+  },
+  {
+    name: "Rima Dellofa",
+    role: "Manajer Keuangan",
+    contribution: "Financial Management",
+    bio: "Mengelola perencanaan keuangan, pencatatan anggaran, analisis biaya produksi, dan pengendalian arus kas usaha.",
+    initials: "RD",
+    domain: "business",
+  },
+  {
+    name: "Mutiara Warda",
+    role: "Manajer Pemasaran",
+    contribution: "Marketing & Branding",
+    bio: "Mengembangkan strategi pemasaran, branding produk, promosi digital, dan hubungan dengan calon pelanggan maupun mitra bisnis.",
+    initials: "MW",
+    domain: "design",
+  },
+];
+
+const leader = members.find(
+  (member) => member.role === "Direktur Utama"
+);
+
+const managers = members.filter(
+  (member) => member.role !== "Direktur Utama"
+);
+
+/* ─────────────────────────────────────────
+   COLOR MAP PER DOMAIN
+   Menggunakan inline style untuk menghindari
+   Tailwind v4 purging pada class dinamis.
+   ───────────────────────────────────────── */
+const domainConfig = {
+  science: {
+    stripColor:  "#7c3aed",
+    avatarBg:    "#7c3aed",
+    badgeBg:     "#ede9fe",
+    badgeColor:  "#5b21b6",
+    badgeBorder: "#ddd6fe",
+    label:       "Sains",
+  },
+  science2: {
+    stripColor:  "#9333ea",
+    avatarBg:    "#9333ea",
+    badgeBg:     "#f3e8ff",
+    badgeColor:  "#7e22ce",
+    badgeBorder: "#e9d5ff",
+    label:       "Sains",
+  },
+  design: {
+    stripColor:  "#0d9488",
+    avatarBg:    "#0d9488",
+    badgeBg:     "#ccfbf1",
+    badgeColor:  "#0f766e",
+    badgeBorder: "#99f6e4",
+    label:       "Desain",
+  },
+  business: {
+    stripColor:  "#d97706",
+    avatarBg:    "#d97706",
+    badgeBg:     "#fef3c7",
+    badgeColor:  "#92400e",
+    badgeBorder: "#fde68a",
+    label:       "Bisnis",
+  },
+  engineering: {
+    stripColor:  "#15803d",
+    avatarBg:    "#15803d",
+    badgeBg:     "#dcfce7",
+    badgeColor:  "#166534",
+    badgeBorder: "#bbf7d0",
+    label:       "Rekayasa",
+  },
+};
+---
+
+<section id="team" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+    <!-- ── SECTION HEADER ── -->
+    <div class="text-center mb-14">
+
+      <!--
+        SIGNATURE ELEMENT: Strip gradien pH — 6 segmen warna dari violet ke hijau,
+        merepresentasikan perubahan warna sensor Safestrip saat mendeteksi pembusukan.
+        Elemen ini mengikat seksi Tim secara visual ke produk itu sendiri.
+      -->
+      <div
+        class="mx-auto mb-7 h-2 w-28 rounded-full overflow-hidden flex"
+        role="img"
+        aria-label="Gradasi warna sensor Safestrip dari ungu ke hijau"
+      >
+        <div class="flex-1" style="background:#7c3aed"></div>
+        <div class="flex-1" style="background:#a855f7"></div>
+        <div class="flex-1" style="background:#c084fc"></div>
+        <div class="flex-1" style="background:#d4a200"></div>
+        <div class="flex-1" style="background:#65a30d"></div>
+        <div class="flex-1" style="background:#15803d"></div>
+      </div>
+
+        <p class="text-sm font-semibold uppercase tracking-widest mb-3 text-violet-600">
+            Tim Safestrip
+        </p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        Orang-orang di Balik Safestrip
+      </h2>
+      <p class="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Tim multidisiplin Universitas Negeri Malang yang mengembangkan Safestrip sebagai indikator kesegaran pangan berbasis bahan alami untuk mendukung keamanan pangan dan mengurangi food waste.
+      </p>
+    </div>
+
+    <!-- ── SUPERVISOR CARD ── -->
+    <div class="mb-8">
+      <div
+        class="relative rounded-2xl border overflow-hidden"
+        style="border-color:#e9d5ff; background: linear-gradient(135deg, #faf5ff 0%, #ffffff 60%);"
+      >
+        <!-- Top gradient strip (supervisor = full spectrum) -->
+        <div
+          class="absolute top-0 left-0 right-0 h-1"
+          style="background: linear-gradient(to right, #7c3aed, #a855f7, #c084fc, #d4a200, #65a30d, #15803d);"
+          aria-hidden="true"
+        ></div>
+
+        <div class="p-7 sm:p-10 pt-9 sm:pt-11 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+
+          <!-- Avatar -->
+          <div
+            class="w-20 h-20 rounded-2xl flex-shrink-0 flex items-center justify-center text-white text-2xl font-bold shadow-sm"
+            style="background:#5b21b6"
+            aria-hidden="true"
+          >
+            {supervisor.initials}
+          </div>
+
+          <!-- Info -->
+          <div class="flex-1 text-center sm:text-left">
+
+            <!-- Badge: Dosen Pembimbing -->
+            <div class="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold mb-4" style="background:#ede9fe; color:#5b21b6;">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                <path d="M3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0z"/>
+              </svg>
+              Dosen Pembimbing
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-0.5">{supervisor.name}</h3>
+            <p class="text-sm font-medium mb-0.5" style="color:#7c3aed">{supervisor.department}</p>
+            <p class="text-sm text-gray-400 mb-4">
+              {supervisor.faculty} · Universitas Negeri Malang
+            </p>
+
+            <!-- Expertise chip -->
+            <div
+              class="inline-block rounded-lg px-3 py-1.5 text-xs mb-4 border"
+              style="background:#ffffff; border-color:#e9d5ff; color:#6b7280;"
+            >
+              <span class="font-semibold" style="color:#7c3aed;">Keahlian: </span>
+              {supervisor.expertise}
+            </div>
+
+            <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">{supervisor.bio}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DIREKTUR UTAMA -->
+
+    {
+    leader && (() => {
+        const cfg = domainConfig[leader.domain];
+
+        return (
+        <div class="mb-8">
+            <div class="relative overflow-hidden rounded-[32px] border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-cyan-50 shadow-lg">
+
+            <div
+                class="absolute inset-x-0 top-0 h-1"
+                style={`background:${cfg.stripColor}`}
+            />
+
+            <div class="p-8 md:p-10">
+
+                <div class="mb-5 inline-flex rounded-full bg-violet-600 px-4 py-1.5 text-sm font-semibold text-white">
+                Direktur Utama • Team Leader
+                </div>
+
+                <div class="flex flex-col gap-6 md:flex-row md:items-center">
+
+                <div
+                    class="flex h-24 w-24 items-center justify-center rounded-3xl text-3xl font-bold text-white shadow-md"
+                    style={`background:${cfg.avatarBg}`}
+                >
+                    {leader.initials}
+                </div>
+
+                <div class="flex-1">
+
+                    <h3 class="text-3xl font-bold text-slate-900">
+                    {leader.name}
+                    </h3>
+
+                    <p
+                    class="mt-2 text-lg font-medium"
+                    style={`color:${cfg.stripColor}`}
+                    >
+                    {leader.role}
+                    </p>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+
+                    <span
+                        class="rounded-full border px-3 py-1 text-sm font-medium"
+                        style={`
+                        background:${cfg.badgeBg};
+                        color:${cfg.badgeColor};
+                        border-color:${cfg.badgeBorder};
+                        `}
+                    >
+                        {leader.contribution}
+                    </span>
+
+                    </div>
+
+                    <p class="mt-5 max-w-3xl leading-relaxed text-slate-600">
+                    {leader.bio}
+                    </p>
+
+                </div>
+
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+        );
+    })()
+    }
+        <!-- TIM MANAJEMEN -->
+
+    <div class="grid gap-5 md:grid-cols-2">
+    {
+        managers.map((member) => {
+        const cfg = domainConfig[member.domain];
+
+        return (
+            <article
+            class="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+            <div
+                class="h-1"
+                style={`background:${cfg.stripColor}`}
+            />
+
+            <div class="p-6">
+
+                <div class="flex items-start gap-4">
+
+                <div
+                    class="flex h-14 w-14 items-center justify-center rounded-2xl text-base font-bold text-white"
+                    style={`background:${cfg.avatarBg}`}
+                >
+                    {member.initials}
+                </div>
+
+                <div class="flex-1">
+
+                    <h3 class="text-lg font-bold text-slate-900">
+                    {member.name}
+                    </h3>
+
+                    <p
+                    class="mt-1 text-sm font-medium"
+                    style={`color:${cfg.stripColor}`}
+                    >
+                    {member.role}
+                    </p>
+
+                </div>
+
+                </div>
+
+                <div class="mt-4">
+
+                <span
+                    class="rounded-full border px-3 py-1 text-xs font-semibold"
+                    style={`
+                    background:${cfg.badgeBg};
+                    color:${cfg.badgeColor};
+                    border-color:${cfg.badgeBorder};
+                    `}
+                >
+                    {member.contribution}
+                </span>
+
+                </div>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-600">
+                {member.bio}
+                </p>
+
+            </div>
+
+            </article>
+        );
+        })
+    }
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+
+    <div class="rounded-2xl bg-violet-50 p-5 text-center">
+        <div class="text-3xl font-bold text-violet-700">1</div>
+        <div class="text-sm text-slate-600">Dosen Pendamping</div>
+    </div>
+
+    <div class="rounded-2xl bg-cyan-50 p-5 text-center">
+        <div class="text-3xl font-bold text-cyan-700">5</div>
+        <div class="text-sm text-slate-600">Anggota Tim</div>
+    </div>
+
+    <div class="rounded-2xl bg-emerald-50 p-5 text-center">
+        <div class="text-3xl font-bold text-emerald-700">4</div>
+        <div class="text-sm text-slate-600">Divisi</div>
+    </div>
+
+    <div class="rounded-2xl bg-amber-50 p-5 text-center">
+        <div class="text-3xl font-bold text-amber-700">1</div>
+        <div class="text-sm text-slate-600">Inovasi Produk</div>
+    </div>
+
+    </div>
+
+    <!-- ── FOOTER BAR: Afiliasi Universitas ── -->
+    <div class="mt-12 pt-8 border-t border-gray-100">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-center sm:text-left">
+
+        <!-- Logo placeholder UM -->
+        <div class="flex items-center gap-3 flex-shrink-0">
+          <div
+            class="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+            style="background:#5b21b6"
+            aria-label="Logo Universitas Negeri Malang"
+          >
+            UM
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-gray-800">Universitas Negeri Malang</p>
+            <p class="text-xs text-gray-400">Program Kreativitas Mahasiswa · 2025</p>
+          </div>
+        </div>
+
+        <!-- Divider (desktop only) -->
+        <div class="hidden sm:block w-px h-8 bg-gray-100" aria-hidden="true"></div>
+
+        <!-- Status aktif -->
+        <div class="flex items-center gap-2">
+          <span class="relative flex h-2 w-2" aria-hidden="true">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background:#4ade80"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2" style="background:#22c55e"></span>
+          </span>
+          <p class="text-sm text-gray-500">Proyek aktif · dalam tahap sertifikasi BPOM</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden sm:block w-px h-8 bg-gray-100" aria-hidden="true"></div>
+
+        <!-- Domain legend -->
+        <div class="flex items-center gap-3 flex-wrap justify-center sm:justify-start">
+          <span class="text-xs text-gray-400 mr-1">Domain:</span>
+          {[
+            { label: "Sains", color: "#7c3aed" },
+            { label: "Desain", color: "#0d9488" },
+            { label: "Bisnis", color: "#d97706" },
+            { label: "Rekayasa", color: "#15803d" },
+          ].map(d => (
+            <span class="flex items-center gap-1.5 text-xs text-gray-500">
+              <span class="w-2 h-2 rounded-full flex-shrink-0" style={`background:${d.color}`} aria-hidden="true"></span>
+              {d.label}
+            </span>
+          ))}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
