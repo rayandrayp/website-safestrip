@@ -1,0 +1,69 @@
+---
+const roadmap = [
+  { q: "Q1 2025", title: "Penelitian & Formulasi", desc: "Pengembangan formula antosianin ubi ungu." },
+  { q: "Q2 2025", title: "Uji Coba Lab", desc: "Pengujian akurasi pada 3 jenis daging & ikan." },
+  { q: "Q3 2025", title: "Prototipe", desc: "Pengembangan prototipe strip pertama." },
+  { q: "Q4 2025", title: "Pre-Launch", desc: "Submit proposal PKM & peluncuran website." },
+  { q: "Q1 2026", title: "Produksi", desc: "Produksi batch pertama (50 pack)." },
+  { q: "Q2 2026", title: "Sertifikasi", desc: "Pengurusan izin & sertifikasi BPOM." },
+  { q: "Q3 2026", title: "Distribusi", desc: "Ekspansi distribusi ke minimarket lokal." },
+];
+---
+
+<section id="roadmap" class="py-24 bg-white overflow-hidden">
+  <div class="mx-auto max-w-4xl px-6">
+    <div class="mb-16 text-center reveal-item">
+      <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Roadmap <span class="text-violet-600">Safestrip</span>
+      </h2>
+      <p class="mt-4 text-slate-600">Perjalanan inovasi kami dalam menghadirkan keamanan pangan.</p>
+    </div>
+
+    <div class="relative space-y-8 
+        before:absolute before:top-0 before:h-full before:w-0.5 
+        before:bg-gradient-to-b before:from-violet-200 before:via-violet-200 before:to-transparent
+        before:left-5 
+        md:before:left-1/2 md:before:-ml-px">  
+        
+      {roadmap.map((item) => (
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-item">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-violet-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+             <div class="w-2 h-2 rounded-full bg-white"></div>
+          </div>
+          
+          <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl border border-slate-100 bg-slate-50 shadow-sm hover:shadow-md transition-shadow">
+            <span class="inline-block px-3 py-1 mb-2 text-xs font-bold uppercase tracking-wider text-violet-700 bg-violet-100 rounded-full">
+              {item.q}
+            </span>
+            <h3 class="text-lg font-bold text-slate-900">{item.title}</h3>
+            <p class="text-sm text-slate-600 mt-1">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  .reveal-item.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
+</script>

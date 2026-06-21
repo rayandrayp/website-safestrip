@@ -1,0 +1,81 @@
+---
+import { Beaker, BarChart3, BookOpen, ArrowRight } from "lucide-astro";
+---
+
+<section id="science" class="relative py-24 bg-slate-50">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto mb-16 max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Ilmu di Balik <span class="text-violet-600">Safestrip</span>
+      </h2>
+      <p class="mt-4 text-lg text-slate-600">
+        Teknologi indikator visual kami memanfaatkan senyawa alami antosianin yang sensitif terhadap perubahan pH akibat gas pembusukan.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+        <h3 class="flex items-center gap-2 text-xl font-bold text-slate-900 mb-6">
+          <Beaker class="text-violet-600" /> Bagaimana Ia Bekerja?
+        </h3>
+        
+        <div class="space-y-6">
+          {[
+            { step: "1", title: "Pembusukan", desc: "Daging/ikan mengalami degradasi protein oleh bakteri." },
+            { step: "2", title: "Gas Volatil", desc: "Produksi senyawa basa seperti Amonia (NH3) meningkat." },
+            { step: "3", title: "Perubahan pH", desc: "Gas basa menempel pada strip, meningkatkan pH lingkungan." },
+            { step: "4", title: "Respon Warna", desc: "Antosianin berubah dari ungu (segar) ke hijau-biru (busuk)." },
+          ].map((item, index) => (
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center font-bold text-sm">
+                {item.step}
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">{item.title}</h4>
+                <p class="text-sm text-slate-600">{item.desc}</p>
+              </div>
+              {index < 3 && <div class="hidden sm:block absolute mt-10 ml-4 h-6 border-l-2 border-dashed border-violet-200" />}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-gradient-to-br from-violet-600 to-teal-600 p-8 rounded-3xl text-white shadow-lg">
+          <h3 class="flex items-center gap-2 text-xl font-bold mb-4">
+            <BarChart3 class="text-teal-200" /> Data Akurasi (Uji Lab)
+          </h3>
+          <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="bg-white/10 p-4 rounded-2xl backdrop-blur-sm">
+              <p class="text-3xl font-bold">92%</p>
+              <p class="text-xs text-teal-100 uppercase tracking-wide mt-1">Sensitivitas</p>
+            </div>
+            <div class="bg-white/10 p-4 rounded-2xl backdrop-blur-sm">
+              <p class="text-3xl font-bold"> 2 Jam</p>
+              <p class="text-xs text-teal-100 uppercase tracking-wide mt-1">Respon Waktu</p>
+            </div>
+          </div>
+          <p class="mt-6 text-sm text-white/80 italic">
+            *Berdasarkan pengujian internal pada sampel daging sapi dan ikan pada suhu ruang selama 24 jam.
+          </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+          <h3 class="flex items-center gap-2 text-xl font-bold text-slate-900 mb-4">
+            <BookOpen class="text-violet-600" /> Referensi Ilmiah
+          </h3>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex gap-2">
+              <span class="text-violet-500">•</span>
+              <span>"Anthocyanin-based smart packaging as an intelligent label for food safety." <em>Journal of Food Science</em>.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-violet-500">•</span>
+              <span>"Natural pH indicators for monitoring the freshness of meat products." <em>Food Control Review</em>.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
