@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/hero-image.png';
 ---
 
 <Layout>
@@ -57,6 +60,13 @@ import Navbar from '../components/Navbar.astro';
 						role="img"
 						aria-label="Mockup kemasan depan produk Safestrip"
 					>
+						<Image 
+      src={heroImg} 
+      alt="Safestrip Smart Meat Quality Indicator" 
+      format="webp"
+      quality={80}
+      class="w-full h-auto object-cover rounded-3xl shadow-2xl shadow-blue-900/10 border border-white/50"
+    />
 					</div>
 				</div>
 			</div>
@@ -218,7 +228,128 @@ import Navbar from '../components/Navbar.astro';
 				</div>
 
 				<div class="mt-20 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-					<!-- Konten fitur akan ditambahkan di langkah berikutnya -->
+
+					<!-- Fitur 1: Alami & Aman -->
+					<article class="reveal reveal-delay-1 group flex flex-col gap-4">
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 text-strip transition-colors duration-300 group-hover:bg-teal-100"
+							aria-hidden="true"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
+								<path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-navy">Alami & Bebas Kimia Berbahaya</h3>
+							<p class="mt-2 text-sm leading-relaxed text-navy-muted/75">
+								Terbuat dari ekstrak antosianin ubi ungu — pewarna alami yang aman bersentuhan dengan kemasan makanan dan tidak mencemari produk.
+							</p>
+						</div>
+					</article>
+
+					<!-- Fitur 2: Tidak Perlu Alat -->
+					<article class="reveal reveal-delay-2 group flex flex-col gap-4">
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 text-navy transition-colors duration-300 group-hover:bg-slate-100"
+							aria-hidden="true"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+								<circle cx="12" cy="12" r="3"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-navy">Cukup Lihat dengan Mata</h3>
+							<p class="mt-2 text-sm leading-relaxed text-navy-muted/75">
+								Tidak butuh aplikasi, scanner, atau perangkat tambahan. Perubahan warna langsung terlihat — siapa saja bisa membaca hasilnya dalam hitungan detik.
+							</p>
+						</div>
+					</article>
+
+					<!-- Fitur 3: Real-Time -->
+					<article class="reveal reveal-delay-3 group flex flex-col gap-4">
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-accent-blue transition-colors duration-300 group-hover:bg-sky-100"
+							aria-hidden="true"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-navy">Deteksi Real-Time, 24 Jam</h3>
+							<p class="mt-2 text-sm leading-relaxed text-navy-muted/75">
+								Strip bereaksi secara kontinu terhadap gas amonia yang dihasilkan proses pembusukan — memantau kualitas daging setiap saat tanpa batas waktu.
+							</p>
+						</div>
+					</article>
+
+					<!-- Fitur 4: Di dalam kemasan -->
+					<article class="reveal reveal-delay-1 group flex flex-col gap-4">
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-fuchsia-50 text-safe transition-colors duration-300 group-hover:bg-fuchsia-100"
+							aria-hidden="true"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+								<path d="m3.3 7 8.7 5 8.7-5"/>
+								<path d="M12 22V12"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-navy">Bekerja di Dalam Kemasan</h3>
+							<p class="mt-2 text-sm leading-relaxed text-navy-muted/75">
+								Ditempel langsung di dinding dalam kemasan daging — mendeteksi perubahan dari sumbernya tanpa perlu membuka plastik atau wadah terlebih dahulu.
+							</p>
+						</div>
+					</article>
+
+					<!-- Fitur 5: Multi-jenis daging -->
+					<article class="reveal reveal-delay-2 group flex flex-col gap-4">
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 text-strip transition-colors duration-300 group-hover:bg-teal-100"
+							aria-hidden="true"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+								<path d="m9 12 2 2 4-4"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-navy">Cocok untuk 3 Jenis Protein</h3>
+							<p class="mt-2 text-sm leading-relaxed text-navy-muted/75">
+								Telah diuji dan terbukti akurat pada
+								<span class="font-medium text-navy">daging sapi</span>,
+								<span class="font-medium text-navy">ayam</span>, dan
+								<span class="font-medium text-navy">ikan</span> — jenis protein hewani yang paling umum dikonsumsi rumah tangga Indonesia.
+							</p>
+						</div>
+					</article>
+
+					<!-- Fitur 6: Ramah Lingkungan -->
+					<article class="reveal reveal-delay-3 group flex flex-col gap-4">
+						<div
+							class="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-green-600 transition-colors duration-300 group-hover:bg-green-100"
+							aria-hidden="true"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-6 w-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
+								<path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
+								<path d="m14 16-3 3 3 3"/>
+								<path d="M8.293 13.596 7.196 9.5 3.1 10.598"/>
+								<path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/>
+								<path d="m13.378 9.633 4.096 1.098 1.097-4.096"/>
+							</svg>
+						</div>
+						<div>
+							<h3 class="text-lg font-semibold text-navy">Ramah Lingkungan</h3>
+							<p class="mt-2 text-sm leading-relaxed text-navy-muted/75">
+								Bahan aktif berasal dari sumber nabati yang dapat terurai secara alami. Mengurangi pemborosan makanan sekaligus meminimalkan limbah kimia sintetis.
+							</p>
+						</div>
+					</article>
+
 				</div>
 			</div>
 		</section>
@@ -257,22 +388,196 @@ import Navbar from '../components/Navbar.astro';
 			</div>
 		</section>
 
-		<!-- Tentang Produk -->
+		<!-- Spesifikasi Produk -->
 		<section
 			id="spesifikasi"
 			class="border-t border-slate-200/70 bg-white px-6 py-28 lg:px-10 lg:py-36"
-			aria-labelledby="tentang-heading"
+			aria-labelledby="spesifikasi-heading"
 		>
 			<div class="mx-auto max-w-6xl">
-				<div class="reveal mx-auto max-w-3xl text-center">
-					<p class="text-xs font-semibold uppercase tracking-widest text-accent-blue">Tentang</p>
-					<h2 id="tentang-heading" class="mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-						Inovasi PKM untuk Keamanan Pangan
+
+				<!-- Header -->
+				<div class="reveal mx-auto max-w-2xl text-center">
+					<p class="text-xs font-semibold uppercase tracking-widest text-accent-blue">Spesifikasi</p>
+					<h2 id="spesifikasi-heading" class="mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+						Detail Produk Safestrip
 					</h2>
 					<p class="mt-5 text-lg leading-relaxed text-navy-muted/75">
-						Solusi sederhana berbasis antosianin ubi ungu — aman, praktis, dan mudah diaplikasikan siapa saja.
+						Inovasi PKM berbasis antosianin ubi ungu — dirancang untuk keamanan pangan sehari-hari.
 					</p>
 				</div>
+
+				<!-- Grid: Tabel + Kartu Kemasan -->
+				<div class="mt-16 grid gap-8 lg:grid-cols-5 lg:gap-12">
+
+					<!-- Tabel Spesifikasi (kiri, lebar) -->
+					<div class="reveal reveal-delay-1 lg:col-span-3">
+						<div class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
+
+							<!-- Header tabel -->
+							<div class="border-b border-slate-100 bg-slate-50/70 px-6 py-4">
+								<p class="text-xs font-semibold uppercase tracking-widest text-navy-muted/50">
+									Tabel Spesifikasi Teknis
+								</p>
+							</div>
+
+							<!-- Baris tabel -->
+							<dl class="divide-y divide-slate-100">
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Bahan Aktif
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										Antosianin Ubi Ungu
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Prinsip Kerja
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										Deteksi gas amonia (pH responsif)
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Indikator Warna
+									</dt>
+									<dd class="px-6 py-4 text-sm font-semibold">
+										<span class="inline-flex items-center gap-1.5">
+											<span class="inline-block h-2.5 w-2.5 rounded-full bg-safe" aria-hidden="true"></span>
+											<span class="text-safe">Ungu</span>
+											<span class="mx-1 text-navy-muted/40">→</span>
+											<span class="inline-block h-2.5 w-2.5 rounded-full bg-strip" aria-hidden="true"></span>
+											<span class="text-strip">Hijau</span>
+										</span>
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Kompatibilitas
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										Daging sapi, ayam &amp; ikan
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Suhu Penyimpanan Strip
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										15 – 25 °C (suhu ruang)
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Cara Aplikasi
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										Tempel di dinding dalam kemasan
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Bahan Aditif
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										Tidak ada — 100% nabati
+									</dd>
+								</div>
+
+								<div class="group grid grid-cols-2 transition-colors duration-150 hover:bg-slate-50/60">
+									<dt class="flex items-center gap-2.5 px-6 py-4 text-sm font-medium text-navy-muted/70">
+										<span class="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent-blue" aria-hidden="true"></span>
+										Asal Inovasi
+									</dt>
+									<dd class="flex items-center px-6 py-4 text-sm font-semibold text-navy">
+										Program Kreativitas Mahasiswa (PKM)
+									</dd>
+								</div>
+
+							</dl>
+						</div>
+					</div>
+
+					<!-- Kartu Kemasan + Catatan (kanan, sempit) -->
+					<div class="reveal reveal-delay-2 flex flex-col gap-6 lg:col-span-2">
+
+						<!-- Kartu kemasan -->
+						<div class="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
+							<p class="text-xs font-semibold uppercase tracking-widest text-accent-blue">Kemasan</p>
+
+							<div class="mt-5 flex items-end justify-between">
+								<div>
+									<p class="text-5xl font-bold tracking-tight text-navy">5</p>
+									<p class="mt-1 text-sm font-medium text-navy-muted/70">strip per kemasan</p>
+								</div>
+								<div
+									class="flex h-14 w-14 items-center justify-center rounded-xl bg-teal-50 text-strip"
+									aria-hidden="true"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-7 w-7" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+										<path d="m3.3 7 8.7 5 8.7-5"/>
+										<path d="M12 22V12"/>
+									</svg>
+								</div>
+							</div>
+
+							<div class="mt-5 space-y-2.5">
+								<div class="flex items-center gap-2 text-sm text-navy-muted/70">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-4 w-4 flex-shrink-0 text-strip" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+									Kemasan resealable
+								</div>
+								<div class="flex items-center gap-2 text-sm text-navy-muted/70">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-4 w-4 flex-shrink-0 text-strip" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+									Ringan &amp; mudah dibawa
+								</div>
+								<div class="flex items-center gap-2 text-sm text-navy-muted/70">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="h-4 w-4 flex-shrink-0 text-strip" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+									Simpan di suhu ruang
+								</div>
+							</div>
+						</div>
+
+						<!-- Kartu indikator warna mini -->
+						<div class="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
+							<p class="text-xs font-semibold uppercase tracking-widest text-accent-blue">Panduan Warna</p>
+							<div class="mt-5 space-y-3">
+								<div class="flex items-center gap-3 rounded-xl bg-fuchsia-50/60 px-4 py-3">
+									<span class="h-4 w-4 flex-shrink-0 rounded-full bg-safe shadow-sm" aria-hidden="true"></span>
+									<div>
+										<p class="text-sm font-semibold text-navy">Ungu Kemerahan</p>
+										<p class="text-xs text-navy-muted/60">Daging segar — aman dikonsumsi</p>
+									</div>
+								</div>
+								<div class="flex items-center gap-3 rounded-xl bg-teal-50/60 px-4 py-3">
+									<span class="h-4 w-4 flex-shrink-0 rounded-full bg-strip shadow-sm" aria-hidden="true"></span>
+									<div>
+										<p class="text-sm font-semibold text-navy">Hijau Kebiruan</p>
+										<p class="text-xs text-navy-muted/60">Daging tidak layak — jangan dikonsumsi</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
 			</div>
 		</section>
 
@@ -300,14 +605,7 @@ import Navbar from '../components/Navbar.astro';
 	</main>
 
 	<!-- Footer -->
-	<footer class="border-t border-slate-200/70 bg-white px-6 py-10 lg:px-10">
-		<div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
-			<p class="text-sm text-navy-muted/60">
-				&copy; {new Date().getFullYear()} Safestrip — Smart Meat Quality Indicator
-			</p>
-			<p class="text-sm text-navy-muted/40">Produk Inovasi PKM · 5 strip per kemasan</p>
-		</div>
-	</footer>
+	 <Footer />
 
 	<script>
 		const reveals = document.querySelectorAll('.reveal');

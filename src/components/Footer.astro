@@ -1,0 +1,261 @@
+---
+const navLinks = [
+	{ label: 'Cara Kerja',   href: '#mekanisme' },
+	{ label: 'Keunggulan',   href: '#fitur' },
+	{ label: 'Spesifikasi',  href: '#spesifikasi' },
+	{ label: 'Kontak',       href: '#kontak' },
+];
+
+const sosmedLinks = [
+	{
+		label: 'Instagram Safestrip',
+		href:  'https://instagram.com/safestrip.id',
+		icon:  'instagram',
+	},
+	{
+		label: 'TikTok Safestrip',
+		href:  'https://tiktok.com/@safestrip.id',
+		icon:  'tiktok',
+	},
+	{
+		label: 'Hubungi via WhatsApp',
+		href:  'https://wa.me/6281234567890?text=Halo%20Safestrip%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20produk%20ini.',
+		icon:  'whatsapp',
+	},
+];
+
+const tahun = new Date().getFullYear();
+---
+
+<!-- Garis gradien pemisah atas footer -->
+<div class="h-px w-full bg-gradient-strip" aria-hidden="true"></div>
+
+<footer class="bg-navy px-6 pt-16 pb-8 lg:px-10" aria-labelledby="footer-heading">
+	<h2 id="footer-heading" class="sr-only">Footer Safestrip</h2>
+
+	<div class="mx-auto max-w-6xl">
+
+		<!-- Grid utama: 3 kolom di desktop, stack di mobile -->
+		<div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-16">
+
+			<!-- Kolom 1: Brand + tagline + sosmed -->
+			<div class="flex flex-col gap-6 sm:col-span-2 lg:col-span-1">
+
+				<!-- Logo -->
+				<a
+					href="#hero"
+					class="w-fit text-xl font-semibold tracking-tight transition-opacity duration-300 hover:opacity-80"
+					aria-label="Safestrip — kembali ke atas halaman"
+				>
+					<span class="text-safe">Safe</span><span class="text-strip">strip</span>
+				</a>
+
+				<!-- Tagline -->
+				<p class="max-w-xs text-sm leading-relaxed text-white/55">
+					Indikator pintar berbasis antosianin ubi ungu yang mendeteksi kesegaran daging
+					langsung dari dalam kemasan — tanpa alat, tanpa aplikasi.
+				</p>
+
+				<!-- Badge PKM -->
+				<div class="flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="none"
+						class="h-3.5 w-3.5 text-strip"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+						<path d="M6 12v5c3 3 9 3 12 0v-5"/>
+					</svg>
+					<span class="text-xs font-medium text-white/60">Produk Inovasi PKM</span>
+				</div>
+
+				<!-- Ikon sosial media -->
+				<div class="flex items-center gap-3">
+					{sosmedLinks.map((s) => (
+						<a
+							href={s.href}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={s.label}
+							class="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/50 transition-all duration-200 hover:border-strip/40 hover:bg-strip/10 hover:text-strip"
+						>
+							{s.icon === 'instagram' && (
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									class="h-4 w-4"
+									stroke="currentColor"
+									stroke-width="1.75"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+									<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+									<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+								</svg>
+							)}
+							{s.icon === 'tiktok' && (
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="h-4 w-4"
+									aria-hidden="true"
+								>
+									<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+								</svg>
+							)}
+							{s.icon === 'whatsapp' && (
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="h-4 w-4"
+									aria-hidden="true"
+								>
+									<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+								</svg>
+							)}
+						</a>
+					))}
+				</div>
+			</div>
+
+			<!-- Kolom 2: Navigasi -->
+			<div>
+				<p class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">
+					Navigasi
+				</p>
+				<ul class="flex flex-col gap-3" role="list">
+					{navLinks.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								class="group flex items-center gap-2 text-sm text-white/55 transition-colors duration-200 hover:text-white"
+							>
+								<span
+									class="h-px w-3 flex-shrink-0 bg-strip opacity-0 transition-all duration-200 group-hover:w-4 group-hover:opacity-100"
+									aria-hidden="true"
+								></span>
+								{link.label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<!-- Kolom 3: Info Produk & Kontak -->
+			<div>
+				<p class="mb-5 text-xs font-semibold uppercase tracking-widest text-white/30">
+					Informasi
+				</p>
+				<ul class="flex flex-col gap-4" role="list">
+
+					<!-- Email -->
+					<li class="flex items-start gap-3">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							class="mt-0.5 h-4 w-4 flex-shrink-0 text-strip"
+							stroke="currentColor"
+							stroke-width="1.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<rect width="20" height="16" x="2" y="4" rx="2"/>
+							<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+						</svg>
+						<a
+							href="mailto:contact@safestrip.id"
+							class="text-sm text-white/55 transition-colors duration-200 hover:text-white"
+						>
+							contact@safestrip.id
+						</a>
+					</li>
+
+					<!-- Kemasan -->
+					<li class="flex items-start gap-3">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							class="mt-0.5 h-4 w-4 flex-shrink-0 text-strip"
+							stroke="currentColor"
+							stroke-width="1.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+							<path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
+						</svg>
+						<span class="text-sm text-white/55">
+							5 strip / kemasan · Suhu ruang
+						</span>
+					</li>
+
+					<!-- Kompatibilitas -->
+					<li class="flex items-start gap-3">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							class="mt-0.5 h-4 w-4 flex-shrink-0 text-strip"
+							stroke="currentColor"
+							stroke-width="1.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+							<path d="m9 12 2 2 4-4"/>
+						</svg>
+						<span class="text-sm text-white/55">
+							Daging sapi, ayam &amp; ikan
+						</span>
+					</li>
+
+					<!-- Indikator warna mini -->
+					<li class="mt-1 flex items-center gap-2.5 rounded-lg border border-white/8 bg-white/5 px-3.5 py-2.5">
+						<span class="flex items-center gap-1.5 text-xs text-white/40">
+							<span class="inline-block h-2 w-2 flex-shrink-0 rounded-full bg-safe" aria-label="Warna ungu = segar"></span>
+							Segar
+						</span>
+						<span class="text-white/20" aria-hidden="true">→</span>
+						<span class="flex items-center gap-1.5 text-xs text-white/40">
+							<span class="inline-block h-2 w-2 flex-shrink-0 rounded-full bg-strip" aria-label="Warna teal = tidak layak"></span>
+							Tidak Layak
+						</span>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<!-- Garis pemisah bawah -->
+		<div class="mt-14 border-t border-white/8"></div>
+
+		<!-- Copyright bar -->
+		<div class="mt-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
+			<p class="text-xs text-white/30">
+				&copy; {tahun} <span class="text-white/45">Safestrip</span> — Smart Meat Quality Indicator.
+				Hak cipta dilindungi.
+			</p>
+
+			<p class="text-xs text-white/20">
+				Dibuat dengan ❤️ oleh Tim PKM
+			</p>
+		</div>
+
+	</div>
+</footer>
