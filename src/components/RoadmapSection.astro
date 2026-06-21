@@ -13,7 +13,6 @@ const roadmap = [
 <section id="roadmap" class="py-24 bg-white overflow-hidden">
   <div class="mx-auto max-w-4xl px-6">
     
-    <!-- Header -->
     <div class="mb-12 text-center reveal-item">
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         Roadmap & <span class="text-violet-600">Komersialisasi</span>
@@ -21,9 +20,7 @@ const roadmap = [
       <p class="mt-4 text-slate-600">Perjalanan inovasi kami dalam menghadirkan keamanan pangan dari lab ke pasar nyata.</p>
     </div>
 
-    <!-- Panel Proyeksi Keuangan (Sesuai Saran Juri PKM) -->
     <div class="mb-16 bg-violet-50 rounded-3xl p-8 border border-violet-100 shadow-sm reveal-item relative overflow-hidden">
-      <!-- Aksen Visual -->
       <div class="absolute -right-10 -top-10 w-32 h-32 bg-violet-200 rounded-full blur-3xl opacity-50"></div>
       
       <div class="relative z-10">
@@ -59,7 +56,6 @@ const roadmap = [
       </div>
     </div>
 
-    <!-- Timeline Roadmap -->
     <div class="relative space-y-8 
         before:absolute before:top-0 before:h-full before:w-0.5 
         before:bg-gradient-to-b before:from-violet-200 before:via-violet-200 before:to-transparent
@@ -89,28 +85,46 @@ const roadmap = [
   .reveal-item {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
   .reveal-item.active {
     opacity: 1;
     transform: translateY(0);
   }
+  
+  /* Dukungan Aksesibilitas (Menghormati Preferensi Pengguna yang Mematikan Animasi OS) */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
 </style>
 
 <script>
-  // Script untuk animasi scroll reveal
-  if (typeof window !== 'undefined') {
+  function initScrollReveal() {
+    const items = document.querySelectorAll('.reveal-item');
+    if (items.length === 0) return;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          // Hentikan pemantauan elemen setelah animasi berjalan demi efisiensi memori RAM
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-
-    // Gunakan requestAnimationFrame untuk memastikan DOM sudah dirender
-    requestAnimationFrame(() => {
-      document.querySelectorAll('.reveal-item').forEach((el) => observer.observe(el));
+    }, { 
+      threshold: 0.05,
+      rootMargin: "0px 0px -50px 0px" // Elemen muncul sedikit sebelum menyentuh batas pandang bawah bawah screen
     });
+
+    items.forEach((el) => observer.observe(el));
   }
+
+  // Mendukung siklus pemuatan standar halaman & arsitektur SPA View Transitions Astro
+  document.addEventListener('DOMContentLoaded', initScrollReveal);
+  document.addEventListener('astro:page-load', initScrollReveal);
 </script>
