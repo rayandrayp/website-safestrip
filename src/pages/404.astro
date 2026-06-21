@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="404: Halaman Tidak Ditemukan | Safestrip">
+  <Navbar />
+
+  <main class="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
+    
+    <div class="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
+      <div class="h-[40rem] w-[40rem] rounded-full bg-gradient-to-br from-violet-200/40 to-teal-200/40 blur-3xl opacity-60"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-2xl text-center">
+      <p class="text-base font-semibold tracking-wider uppercase text-violet-600">
+        Kesalahan 404
+      </p>
+      
+      <h1 class="mt-4 text-7xl font-bold tracking-tight sm:text-9xl bg-gradient-to-r from-violet-600 to-teal-600 bg-clip-text text-transparent pb-4">
+        404
+      </h1>
+      
+      <h2 class="mt-4 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+        Halaman Tidak Ditemukan
+      </h2>
+      <p class="mt-6 text-lg leading-relaxed text-slate-600 max-w-lg mx-auto">
+        Sama seperti daging yang sudah berubah warna menjadi hijau kebiruan, halaman yang Anda cari sepertinya sudah tidak ada di sini, telah dipindahkan, atau URL-nya salah.
+      </p>
+      
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <a
+          href="/"
+          class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-navy px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-muted hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Kembali ke Beranda
+        </a>
+        
+        <a 
+          href="/#order" 
+          class="text-sm font-semibold leading-6 text-navy transition-colors duration-300 hover:text-violet-600"
+        >
+          Hubungi Support <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+    
+  </main>
+
+  <Footer />
+</Layout>
