@@ -1,0 +1,59 @@
+---
+const faqList = [
+  {
+    question: "Apakah strip aman bersentuhan dengan makanan?",
+    answer: "Ya, Safestrip dibuat dengan bahan food-grade yang aman dan tidak meninggalkan residu kimia pada makanan. Produk kami dirancang khusus agar hanya bereaksi dengan gas volatil alami yang dikeluarkan daging."
+  },
+  {
+    question: "Berapa lama strip bisa dipakai sebelum ditempel?",
+    answer: "Safestrip memiliki masa simpan hingga 12 bulan dalam kemasan tertutup rapat. Pastikan menyimpannya di tempat yang sejuk, kering, dan terhindar dari paparan sinar matahari langsung agar reagen tetap aktif."
+  },
+  {
+    question: "Apakah bisa untuk semua jenis daging?",
+    answer: "Safestrip sangat efektif untuk daging merah (sapi/kambing), daging unggas (ayam), dan berbagai jenis ikan. Produk kami sensitif terhadap gas amonia (NH3) yang umum dihasilkan oleh protein hewani saat mengalami pembusukan."
+  },
+  {
+    question: "Bagaimana jika warna berubah tapi daging masih segar?",
+    answer: "Perubahan warna strip dipicu oleh gas volatil. Jika strip berubah warna saat daging masih segar, kemungkinan besar kemasan daging tidak tertutup rapat atau terjadi fluktuasi suhu ekstrem. Jika ini terjadi, segera periksa kondisi fisik daging."
+  },
+  {
+    question: "Apakah tersedia untuk restoran atau UMKM?",
+    answer: "Tentu! Kami menyediakan opsi kemasan khusus (bulk) dengan harga grosir untuk mitra restoran, hotel, dan UMKM. Silakan hubungi tim sales kami melalui formulir kontak di bawah untuk penawaran harga terbaik."
+  },
+  {
+    question: "Bagaimana cara memesan dalam jumlah banyak?",
+    answer: "Untuk pemesanan skala besar (B2B), Anda bisa langsung mengirimkan pesan melalui halaman 'Kontak Kami' atau mengirim email ke bisnis@safestrip.id. Tim kami akan segera merespons untuk kebutuhan kontrak suplai Anda."
+  },
+  {
+    question: "Apakah strip tahan terhadap kelembapan tinggi di dalam kulkas?",
+    answer: "Ya, Safestrip dirancang untuk tetap stabil di lingkungan kulkas yang lembap. Namun, pastikan strip tidak terendam air secara langsung agar sensor tidak rusak sebelum waktunya."
+  }
+];
+---
+
+<section id="faq" class="py-24 px-6 lg:px-10 bg-white">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-navy sm:text-4xl">Pertanyaan Umum</h2>
+      <p class="mt-4 text-navy-muted/70">Segala hal yang perlu Anda ketahui tentang Safestrip.</p>
+    </div>
+
+    <div class="space-y-4">
+      {faqList.map((item) => (
+        <details class="group rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 open:shadow-lg open:border-blue-200">
+          <summary class="flex cursor-pointer list-none items-center justify-between font-medium text-navy">
+            {item.question}
+            <span class="transition group-open:rotate-180">
+              <svg fill="none" height="20" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="20">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-navy-muted/70 leading-relaxed">
+            {item.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
