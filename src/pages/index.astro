@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import OrderSection from "../components/OrderSection.astro";
 import { Image } from 'astro:assets';
 import heroImg from '../assets/hero-image.png';
 ---
@@ -580,30 +581,8 @@ import heroImg from '../assets/hero-image.png';
 
 			</div>
 		</section>
-
-		<!-- Kontak / CTA -->
-		<section
-			id="kontak"
-			class="px-6 py-28 lg:px-10 lg:py-36"
-			aria-labelledby="kontak-heading"
-		>
-			<div class="reveal mx-auto max-w-3xl text-center">
-				<h2 id="kontak-heading" class="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-					Tertarik dengan Safestrip?
-				</h2>
-				<p class="mt-5 text-lg text-navy-muted/75">
-					Hubungi tim PKM Safestrip untuk informasi lebih lanjut.
-				</p>
-				<a
-					href="mailto:contact@safestrip.id"
-					class="mt-10 inline-flex items-center justify-center rounded-full bg-navy px-10 py-4 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-muted hover:shadow-lg active:translate-y-0"
-				>
-					Hubungi Kami
-				</a>
-			</div>
-		</section>
 	</main>
-
+	<OrderSection />
 	<!-- Footer -->
 	 <Footer />
 
