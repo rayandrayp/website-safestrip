@@ -1,7 +1,15 @@
 ---
+// NAVBAR.ASTRO — DIPERBAIKI
+// Perubahan utama:
+// 1. Ditambahkan mobile menu panel (#mobile-menu) yang sebelumnya tidak ada
+// 2. Ditambahkan JavaScript toggle dengan aria-expanded yang benar
+// 3. Hamburger button sekarang memiliki aria-controls dan aria-expanded
+// 4. Tutup otomatis saat klik di luar area dan saat link diklik
+
 const navLinks = [
     { label: 'Urgensi', href: '#masalah' },
     { label: 'Inovasi', href: '#solusi-fitur' },
+    { label: 'Cara Kerja', href: '#mekanisme' },
     { label: 'Produk', href: '#spesifikasi' },
     { label: 'Tentang Kami', href: '#team' },
     { label: 'Bantuan', href: '#faq' },
@@ -16,14 +24,17 @@ const navLinks = [
         class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10"
         aria-label="Navigasi Utama Safestrip"
     >
+        <!-- Logo -->
         <a
             href="#hero"
             class="text-xl font-bold tracking-tight text-slate-900 transition-opacity hover:opacity-80"
+            aria-label="Safestrip — Kembali ke atas halaman"
         >
             Safe<span class="text-violet-600">strip</span>
         </a>
 
         <div class="flex items-center gap-8">
+            <!-- Desktop Navigation -->
             <ul class="hidden md:flex items-center gap-8" role="list">
                 {
                     navLinks.map((link) => (
@@ -40,6 +51,7 @@ const navLinks = [
                 }
             </ul>
 
+            <!-- Desktop CTA Button -->
             <a
                 href="#order"
                 class="hidden md:inline-flex rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-slate-800 hover:shadow-lg active:scale-95"
@@ -47,16 +59,124 @@ const navLinks = [
                 Pesan Sekarang
             </a>
 
+            <!-- PERBAIKAN: Hamburger Button dengan aria-expanded dan aria-controls yang benar -->
             <button
                 id="hamburger-btn"
                 type="button"
                 aria-label="Buka menu navigasi"
-                class="md:hidden p-2 text-slate-700"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                class="md:hidden flex items-center justify-center p-2 text-slate-700 rounded-lg hover:bg-slate-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
             >
-                <svg id="icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-                <svg id="icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                <!-- Ikon Hamburger (kondisi default: menu tertutup) -->
+                <svg id="icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+                <!-- Ikon X (kondisi: menu terbuka) -->
+                <svg id="icon-close" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
             </button>
         </div>
     </nav>
-    
-    </header>
+
+    <!-- ─── PERBAIKAN: Mobile Menu Panel ─── -->
+    <!-- Sebelumnya: panel ini sama sekali tidak ada di kode -->
+    <!-- Sekarang: panel dengan animasi smooth, aksesibel, dan responsive -->
+    <div
+        id="mobile-menu"
+        role="navigation"
+        aria-label="Menu navigasi mobile"
+        aria-hidden="true"
+        class="hidden md:hidden overflow-hidden border-t border-slate-100 bg-white/95 backdrop-blur-lg transition-all duration-300"
+    >
+        <div class="px-6 py-4">
+            <ul class="flex flex-col gap-1" role="list">
+                {
+                    navLinks.map((link) => (
+                        <li>
+                            <a
+                                href={link.href}
+                                data-mobile-nav-link
+                                class="block py-3 px-3 rounded-xl text-sm font-semibold text-slate-700 hover:text-violet-700 hover:bg-violet-50 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <!-- Mobile CTA Button -->
+            <div class="mt-4 pt-4 border-t border-slate-100">
+                <a
+                    href="#order"
+                    data-mobile-nav-link
+                    class="flex items-center justify-center w-full rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-slate-800 active:scale-95 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
+                >
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    // ─── Mobile Menu Toggle Logic ───
+
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    function openMenu() {
+        mobileMenu?.classList.remove('hidden');
+        // Trigger reflow agar transition CSS berjalan
+        mobileMenu?.offsetHeight;
+        hamburgerBtn?.setAttribute('aria-expanded', 'true');
+        mobileMenu?.setAttribute('aria-hidden', 'false');
+        iconOpen?.classList.add('hidden');
+        iconClose?.classList.remove('hidden');
+        hamburgerBtn?.setAttribute('aria-label', 'Tutup menu navigasi');
+    }
+
+    function closeMenu() {
+        mobileMenu?.classList.add('hidden');
+        hamburgerBtn?.setAttribute('aria-expanded', 'false');
+        mobileMenu?.setAttribute('aria-hidden', 'true');
+        iconOpen?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+        hamburgerBtn?.setAttribute('aria-label', 'Buka menu navigasi');
+    }
+
+    // Toggle saat hamburger diklik
+    hamburgerBtn?.addEventListener('click', () => {
+        const isOpen = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+    });
+
+    // Tutup menu otomatis saat salah satu link diklik (smooth UX)
+    document.querySelectorAll('[data-mobile-nav-link]').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Tutup menu saat klik di luar area header (backdrop click)
+    document.addEventListener('click', (e) => {
+        const header = document.getElementById('site-header');
+        const target = e.target as Node;
+        if (header && !header.contains(target)) {
+            closeMenu();
+        }
+    });
+
+    // Tutup menu saat layar diperbesar ke ukuran desktop (md breakpoint = 768px)
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    mediaQuery.addEventListener('change', (e) => {
+        if (e.matches) closeMenu();
+    });
+
+    // Support Astro View Transitions: re-inisialisasi saat navigasi SPA
+    document.addEventListener('astro:page-load', () => {
+        closeMenu();
+    });
+</script>

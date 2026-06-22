@@ -7,9 +7,12 @@ interface Props {
 }
 
 const {
-    title = 'Safestrip — Smart Meat Quality Indicator',
-    description = 'Indikator kesegaran pintar untuk daging dan ikan. Sensor visual berbasis perubahan warna.',
+    title = 'Safestrip — Indikator Kesegaran Daging & Ikan Berbasis Antosianin Ubi Ungu',
+    description = 'Safestrip adalah biosensor strip pintar berbahan antosianin ubi ungu yang mendeteksi pembusukan daging dan ikan secara visual real-time dari dalam kemasan. Aman, akurat, food-grade.',
 } = Astro.props;
+
+// PERBAIKAN: Canonical URL digenerate secara dinamis dari URL halaman aktif
+const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel.app').href;
 ---
 
 <!doctype html>
@@ -17,36 +20,178 @@ const {
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
+        <!-- ─── Primary SEO ─── -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        {/* PERBAIKAN: Keywords meta tag - memperkuat topik halaman untuk crawler */}
+        <meta name="keywords" content="safestrip, indikator kesegaran daging, sensor amonia daging, antosianin ubi ungu, food freshness indicator, deteksi pembusukan, PKM kewirausahaan, keamanan pangan Indonesia, in-package biosensor, TVB-N indicator" />
+        <meta name="author" content="Tim PKM-K Safestrip, Universitas Negeri Malang" />
+        <meta name="robots" content="index, follow" />
+        {/* PERBAIKAN KRITIKAL: Canonical link tag — sebelumnya tidak ada, menyebabkan potensi duplicate content */}
+        <link rel="canonical" href={canonicalURL} />
+
+        <!-- ─── Open Graph ─── -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:url" content="https://safestrip-three.vercel.app" />
-        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://safestrip-three.vercel.app/images/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Safestrip — Strip biosensor indikator kesegaran daging berbasis antosianin ubi ungu" />
+        <meta property="og:locale" content="id_ID" />
+        <meta property="og:site_name" content="Safestrip" />
+
+        <!-- ─── Twitter Card ─── -->
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalURL} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://safestrip-three.vercel.app/images/og-image.jpg" />
 
+        <!-- ─── Favicon ─── -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="description" content={description} />
-        <title>{title}</title>
+
+        <!-- ─── Fonts: Plus Jakarta Sans (semua weight yang dipakai) ─── -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
             rel="stylesheet"
         />
+
+        <!-- ─── JSON-LD: Product Schema ─── -->
+        {/* PERBAIKAN: Structured data memperkuat tampilan Google Search Results.
+            Product schema membantu munculnya rich snippet harga di Google. */}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Safestrip",
+          "description": "Strip biosensor pintar berbahan antosianin ubi ungu untuk mendeteksi pembusukan daging dan ikan secara visual dari dalam kemasan.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Safestrip"
+          },
+          "category": "Food Safety Device",
+          "url": "https://safestrip-three.vercel.app",
+          "image": "https://safestrip-three.vercel.app/images/og-image.jpg",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Paket Personal (5 Strip)",
+              "price": "24900",
+              "priceCurrency": "IDR",
+              "availability": "https://schema.org/InStock",
+              "seller": { "@type": "Organization", "name": "Safestrip" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Paket UMKM & Resto (10 Strip)",
+              "price": "44900",
+              "priceCurrency": "IDR",
+              "availability": "https://schema.org/InStock",
+              "seller": { "@type": "Organization", "name": "Safestrip" }
+            }
+          ],
+          "manufacturer": {
+            "@type": "Organization",
+            "name": "Tim PKM-K Safestrip",
+            "url": "https://safestrip-three.vercel.app/#team"
+          }
+        }
+        </script>
+
+        <!-- ─── JSON-LD: FAQ Schema ─── -->
+        {/* PERBAIKAN: FAQ Schema memungkinkan munculnya FAQ Accordion di Google Search Results,
+            meningkatkan CTR secara signifikan tanpa biaya iklan. */}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Apakah strip Safestrip aman bersentuhan dengan makanan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya, Safestrip dibuat dengan bahan food-grade yang aman dan tidak meninggalkan residu kimia pada makanan. Produk kami dirancang khusus agar hanya bereaksi dengan gas volatil alami yang dikeluarkan daging."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Berapa lama strip Safestrip bisa disimpan sebelum digunakan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Safestrip memiliki masa simpan hingga 12 bulan dalam kemasan tertutup rapat. Pastikan menyimpannya di tempat sejuk, kering, dan terhindar dari paparan sinar matahari langsung agar reagen tetap aktif."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Apakah Safestrip bisa digunakan untuk semua jenis daging?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Safestrip sangat efektif untuk daging merah (sapi/kambing), daging unggas (ayam), dan berbagai jenis ikan segar. Produk kami sensitif terhadap gas amonia (NH3) yang umum dihasilkan protein hewani saat mengalami pembusukan."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Bagaimana jika warna strip berubah tapi daging masih segar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Perubahan warna strip dipicu oleh gas volatil. Jika strip berubah warna saat daging masih segar, kemungkinan besar kemasan daging tidak tertutup rapat atau terjadi fluktuasi suhu ekstrem. Segera periksa kondisi fisik daging secara menyeluruh."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Apakah Safestrip tersedia untuk restoran atau UMKM?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tentu! Kami menyediakan opsi kemasan khusus (bulk) dengan harga grosir untuk mitra restoran, hotel, dan UMKM. Silakan hubungi tim sales kami melalui formulir kontak untuk penawaran harga terbaik."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Apakah Safestrip tahan terhadap kelembapan tinggi di dalam kulkas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ya, Safestrip dirancang untuk tetap stabil di lingkungan kulkas yang lembap. Namun, pastikan strip tidak terendam air secara langsung agar sensor tidak rusak sebelum waktunya."
+              }
+            }
+          ]
+        }
+        </script>
+
+        <!-- ─── JSON-LD: Organization Schema ─── -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Safestrip",
+          "url": "https://safestrip-three.vercel.app",
+          "logo": "https://safestrip-three.vercel.app/favicon.svg",
+          "description": "Tim PKM-K mahasiswa Universitas Negeri Malang yang berinovasi di bidang keamanan pangan berbasis biosensor alami.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+6285755554151",
+            "contactType": "customer service",
+            "availableLanguage": "Indonesian"
+          },
+          "sameAs": ["https://wa.me/6285755554151"]
+        }
+        </script>
     </head>
     <body class="min-h-screen bg-slate-50 font-sans text-navy antialiased">
-        
+
         <slot />
 
+        <!-- Back to Top Button -->
         <button
             id="back-to-top"
-            aria-label="Kembali ke atas"
+            aria-label="Kembali ke atas halaman"
             class="pointer-events-none fixed bottom-6 right-6 z-50 flex h-12 w-12 translate-y-12 items-center justify-center rounded-full bg-navy text-white opacity-0 shadow-lg shadow-navy/20 transition-all duration-300 hover:-translate-y-1 hover:bg-navy-muted hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-violet-100 sm:bottom-8 sm:right-8"
         >
             <svg
@@ -58,17 +203,16 @@ const {
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="h-5 w-5"
+                aria-hidden="true"
             >
                 <path d="m18 15-6-6-6 6" />
             </svg>
         </button>
 
         <script>
-            // Logika untuk menampilkan dan menyembunyikan tombol
             const backToTopButton = document.getElementById('back-to-top');
 
             const toggleBackToTop = () => {
-                // Tampilkan tombol jika di-scroll lebih dari 400px
                 if (window.scrollY > 400) {
                     backToTopButton?.classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none');
                     backToTopButton?.classList.add('opacity-100', 'translate-y-0', 'cursor-pointer');
@@ -78,15 +222,11 @@ const {
                 }
             };
 
-            // Event listener untuk scroll
-            window.addEventListener('scroll', toggleBackToTop);
+            // passive: true → tidak memblokir rendering saat scroll (perf improvement)
+            window.addEventListener('scroll', toggleBackToTop, { passive: true });
 
-            // Event listener untuk klik (scroll ke atas)
             backToTopButton?.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         </script>
     </body>
