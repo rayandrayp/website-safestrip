@@ -13,14 +13,14 @@ const roadmap = [
 <section id="roadmap" class="py-24 bg-white overflow-hidden">
   <div class="mx-auto max-w-4xl px-6">
     
-    <div class="mb-12 text-center reveal-item">
+    <div class="mb-12 text-center reveal">
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         Roadmap & <span class="text-violet-600">Komersialisasi</span>
       </h2>
       <p class="mt-4 text-slate-600">Perjalanan inovasi kami dalam menghadirkan keamanan pangan dari lab ke pasar nyata.</p>
     </div>
 
-    <div class="mb-16 bg-violet-50 rounded-3xl p-8 border border-violet-100 shadow-sm reveal-item relative overflow-hidden">
+    <div class="mb-16 bg-violet-50 rounded-3xl p-8 border border-violet-100 shadow-sm reveal relative overflow-hidden">
       <div class="absolute -right-10 -top-10 w-32 h-32 bg-violet-200 rounded-full blur-3xl opacity-50"></div>
       
       <div class="relative z-10">
@@ -63,7 +63,7 @@ const roadmap = [
         md:before:left-1/2 md:before:-ml-px">  
         
       {roadmap.map((item) => (
-        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal-item">
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
           <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-violet-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
              <div class="w-2 h-2 rounded-full bg-white"></div>
           </div>
@@ -80,51 +80,3 @@ const roadmap = [
     </div>
   </div>
 </section>
-
-<style>
-  .reveal-item {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity;
-  }
-  .reveal-item.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Dukungan Aksesibilitas (Menghormati Preferensi Pengguna yang Mematikan Animasi OS) */
-  @media (prefers-reduced-motion: reduce) {
-    .reveal-item {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
-  }
-</style>
-
-<script>
-  function initScrollReveal() {
-    const items = document.querySelectorAll('.reveal-item');
-    if (items.length === 0) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          // Hentikan pemantauan elemen setelah animasi berjalan demi efisiensi memori RAM
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { 
-      threshold: 0.05,
-      rootMargin: "0px 0px -50px 0px" // Elemen muncul sedikit sebelum menyentuh batas pandang bawah bawah screen
-    });
-
-    items.forEach((el) => observer.observe(el));
-  }
-
-  // Mendukung siklus pemuatan standar halaman & arsitektur SPA View Transitions Astro
-  document.addEventListener('DOMContentLoaded', initScrollReveal);
-  document.addEventListener('astro:page-load', initScrollReveal);
-</script>
