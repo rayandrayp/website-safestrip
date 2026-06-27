@@ -13,6 +13,8 @@ import ScienceSection from '../components/ScienceSection.astro';
 import RoadmapSection from '../components/RoadmapSection.astro';
 import TeamSection from '../components/Team.astro';
 import FAQ from '../components/FAQ.astro';
+// ↓ BARU: import TestimonialSection
+import TestimonialSection from '../components/TestimonialSection.astro';
 ---
 
 <Layout>
@@ -25,16 +27,20 @@ import FAQ from '../components/FAQ.astro';
 		<ScienceSection />
 		<CaraPenggunaan />
 		<Spesifikasi />
+		<!-- ↓ BARU: ditempatkan tepat sebelum OrderSection (social proof → CTA) -->
+		<TestimonialSection />
 		<OrderSection />
 		<RoadmapSection />
 		<TeamSection />
 		<FAQ />
 	</main>
 
-	<!-- Footer -->
-	 <Footer />
+	<Footer />
 
 	<script>
+		// UNIFIED: Satu observer untuk semua elemen .reveal di seluruh halaman.
+		// Mengadopsi unobserve() dari RoadmapSection (System 2) — lebih efisien
+		// karena elemen berhenti diobservasi setelah animasi berjalan sekali.
 		const reveals = document.querySelectorAll('.reveal');
 
 		const observer = new IntersectionObserver(
@@ -42,15 +48,21 @@ import FAQ from '../components/FAQ.astro';
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						entry.target.classList.add('is-visible');
+						// Berhenti mengamati setelah animasi selesai → hemat memori
+						observer.unobserve(entry.target);
 					}
 				});
 			},
-			{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+			{ threshold: 0.08, rootMargin: '0px 0px -48px 0px' },
 		);
 
 		reveals.forEach((el) => observer.observe(el));
-	</script>
 
+		// Re-inisialisasi saat navigasi SPA (Astro View Transitions)
+		document.addEventListener('astro:page-load', () => {
+			document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => observer.observe(el));
+		});
+	</script>
 
 	<script>
 		const btn = document.getElementById('simulate-btn') as HTMLButtonElement;
