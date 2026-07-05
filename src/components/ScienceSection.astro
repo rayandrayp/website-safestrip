@@ -19,22 +19,35 @@ import { Beaker, BarChart3, BookOpen, ArrowRight } from "lucide-astro";
           <Beaker class="text-violet-600" /> Bagaimana Ia Bekerja?
         </h3>
         
-        <div class="space-y-6">
+        <div class="relative space-y-6">
+          {/* PERBAIKAN: garis konektor tunggal yang kontinu, di-anchor ke parent
+              list ini (bukan terfragmentasi 3x dengan margin tebakan mt-10/h-6
+              yang rapuh terhadap tinggi teks berbeda-beda per step).
+              "relative" pada parent inilah yang dibutuhkan agar garis "absolute"
+              di bawah punya titik anchor yang benar & konsisten di semua device. */}
+          <div
+            class="hidden sm:block absolute left-4 top-2 bottom-2 border-l-2 border-dashed border-violet-200 pointer-events-none"
+            aria-hidden="true"
+          />
+
           {[
             { step: "1", title: "Pembusukan", desc: "Daging/ikan mengalami degradasi protein oleh bakteri." },
             { step: "2", title: "Gas Volatil", desc: "Produksi senyawa basa seperti Amonia (NH3) meningkat." },
             { step: "3", title: "Perubahan pH", desc: "Gas basa menempel pada strip, meningkatkan pH lingkungan." },
             { step: "4", title: "Respon Warna", desc: "Antosianin berubah dari ungu (segar) ke hijau-biru (busuk)." },
-          ].map((item, index) => (
+          ].map((item) => (
             <div class="relative flex items-start gap-4">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center font-bold text-sm">
+              {/* relative + z-10: memastikan badge nomor SELALU tampil di atas
+                  garis konektor secara eksplisit, bukan mengandalkan urutan DOM
+                  yang implisit (badge sebelumnya position:static, z-index tanpa
+                  efek — perbaikan ini membuat stacking deterministik). */}
+              <div class="relative z-10 flex-shrink-0 w-8 h-8 rounded-full bg-violet-100 text-violet-700 flex items-center justify-center font-bold text-sm">
                 {item.step}
               </div>
               <div>
                 <h4 class="font-semibold text-slate-900">{item.title}</h4>
                 <p class="text-sm text-slate-600">{item.desc}</p>
               </div>
-              {index < 3 && <div class="hidden sm:block absolute mt-10 ml-4 h-6 border-l-2 border-dashed border-violet-200" />}
             </div>
           ))}
         </div>
