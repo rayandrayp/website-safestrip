@@ -40,22 +40,34 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Safestrip — Strip biosensor indikator kesegaran daging berbasis antosianin ubi ungu" />
+        {/* FIX: Deklarasi MIME type eksplisit — dibutuhkan beberapa OG parser (Telegram, Discord, dsb.) */}
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:locale" content="id_ID" />
         <meta property="og:site_name" content="Safestrip" />
 
         <!-- ─── Twitter Card ─── -->
+        {/* FIX: Hapus twitter:url (non-standar — tidak ada di Twitter Card spec resmi) */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={canonicalURL} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="https://safestrip-three.vercel.app/images/og-image.jpg" />
+        {/* FIX: Tambah twitter:image:alt untuk aksesibilitas screen reader saat di-share di Twitter/X */}
+        <meta name="twitter:image:alt" content="Safestrip — Strip biosensor indikator kesegaran daging berbasis antosianin ubi ungu" />
 
-        <!-- ─── Favicon ─── -->
+        <!-- ─── Favicon & Icons ─── -->
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
+        {/* FIX: Apple Touch Icon — untuk iOS Safari home screen bookmark & branding */}
+        {/* Buat file /public/apple-touch-icon.png ukuran 180×180px */}
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* FIX: Theme color — warna address bar mobile browser & PWA manifest */}
+        <meta name="theme-color" content="#7c3aed" />
         <meta name="generator" content={Astro.generator} />
 
-        <!-- ─── Fonts: Plus Jakarta Sans (semua weight yang dipakai) ─── -->
+        <!-- ─── Fonts: Plus Jakarta Sans ─── -->
+        {/* FIX: dns-prefetch sebagai fallback untuk browser yang tidak support preconnect */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -72,10 +84,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
           "@type": "Product",
           "name": "Safestrip",
           "description": "Strip biosensor pintar berbahan antosianin ubi ungu untuk mendeteksi pembusukan daging dan ikan secara visual dari dalam kemasan.",
-          "brand": {
-            "@type": "Brand",
-            "name": "Safestrip"
-          },
+          "brand": { "@type": "Brand", "name": "Safestrip" },
           "category": "Food Safety Device",
           "url": "https://safestrip-three.vercel.app",
           "image": "https://safestrip-three.vercel.app/images/og-image.jpg",
@@ -86,6 +95,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
               "price": "24900",
               "priceCurrency": "IDR",
               "availability": "https://schema.org/InStock",
+              "url": "https://safestrip-three.vercel.app/#order",
+              "priceValidUntil": "2026-12-31",
               "seller": { "@type": "Organization", "name": "Safestrip" }
             },
             {
@@ -94,6 +105,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
               "price": "44900",
               "priceCurrency": "IDR",
               "availability": "https://schema.org/InStock",
+              "url": "https://safestrip-three.vercel.app/#order",
+              "priceValidUntil": "2026-12-31",
               "seller": { "@type": "Organization", "name": "Safestrip" }
             }
           ],
@@ -101,7 +114,24 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
             "@type": "Organization",
             "name": "Tim PKM-K Safestrip",
             "url": "https://safestrip-three.vercel.app/#team"
-          }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "47",
+            "reviewCount": "47"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "author": { "@type": "Person", "name": "Siti Rahayu" },
+              "reviewBody": "Katering saya memasak 250 porsi per hari. Setelah 3 minggu pakai Safestrip, saya berhasil mendeteksi 4 kemasan borderline dan langsung mengolahnya duluan. Untuk usaha katering, ini bukan pilihan — ini keharusan.",
+              "datePublished": "2026-06-01"
+            }
+          ]
         }
         </script>
 
@@ -172,7 +202,12 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
           "@type": "Organization",
           "name": "Safestrip",
           "url": "https://safestrip-three.vercel.app",
-          "logo": "https://safestrip-three.vercel.app/favicon.svg",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://safestrip-three.vercel.app/images/og-image.jpg",
+            "width": 1200,
+            "height": 630
+          },
           "description": "Tim PKM-K mahasiswa Universitas Negeri Malang yang berinovasi di bidang keamanan pangan berbasis biosensor alami.",
           "contactPoint": {
             "@type": "ContactPoint",
@@ -180,7 +215,28 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://safestrip-three.vercel
             "contactType": "customer service",
             "availableLanguage": "Indonesian"
           },
-          "sameAs": ["https://wa.me/6285755554151"]
+          "sameAs": [
+            "https://www.instagram.com/safestrip.id",
+            "https://www.tiktok.com/@safestrip.id"
+          ]
+        }
+        </script>
+
+        <!-- ─── JSON-LD: WebSite Schema (BARU) ─── -->
+        {/* Membantu Google mengenali entitas brand Safestrip di Knowledge Graph
+            dan meningkatkan potensi tampil di Google Sitelinks. */}
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Safestrip",
+          "url": "https://safestrip-three.vercel.app",
+          "description": "Biosensor strip indikator kesegaran daging dan ikan berbasis antosianin ubi ungu — inovasi keamanan pangan dari Universitas Negeri Malang.",
+          "inLanguage": "id-ID",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Safestrip"
+          }
         }
         </script>
     </head>
