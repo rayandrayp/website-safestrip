@@ -19,7 +19,7 @@
           </p>
         </div>
 
-        <!-- Indikator Visual (diintegrasikan dari "Screenshot 2026-06-21 at 12.32.30.png") -->
+        <!-- Indikator Visual -->
         <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
           <h3
             class="text-xs font-bold text-slate-400 tracking-widest text-center uppercase mb-6"
@@ -27,9 +27,10 @@
             Indikator Visual
           </h3>
 
-          <!-- Gradient Bar -->
+          <!-- Gradient Bar — DIUBAH: fuchsia-500 (segar) → teal-500 (tidak layak) -->
           <div
-            class="h-4 w-full rounded-full bg-gradient-to-r from-violet-600 to-emerald-500 shadow-inner"
+            class="h-4 w-full rounded-full shadow-inner"
+            style="background: linear-gradient(to right, #d946ef, #a855f7, #14b8a6);"
           >
           </div>
 
@@ -59,10 +60,11 @@
             Uji Coba Sensor
           </p>
 
-          <!-- Sensor Visual -->
+          <!-- Sensor Visual — DIUBAH: fuchsia-500 (ungu-pink) sebagai warna awal (segar) -->
           <div
             id="sensor-visual"
-            class="w-20 h-40 rounded-full bg-violet-600 shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all duration-700 ease-in-out border-4 border-white"
+            class="w-20 h-40 rounded-full transition-all duration-700 ease-in-out border-4 border-white"
+            style="background-color: #d946ef; box-shadow: 0 0 20px rgba(217, 70, 239, 0.35);"
           >
           </div>
 
@@ -84,3 +86,43 @@
     </div>
   </div>
 </section>
+
+<script>
+  const sensor = document.getElementById("sensor-visual") as HTMLElement;
+  const statusTx = document.getElementById("status-text") as HTMLElement;
+  const descTx = document.getElementById("desc-text") as HTMLElement;
+  const btn = document.getElementById("simulate-btn") as HTMLButtonElement;
+
+  // ── Definisi warna sesuai permintaan ─────────────────────────────────
+  const STATE = {
+    segar: {
+      // Ungu-pink (Image 2) — fuchsia-500
+      bg: "#d946ef",
+      shadow: "0 0 20px rgba(217, 70, 239, 0.35)",
+      label: "Segar",
+      desc: "Daging dalam kondisi optimal",
+      btn: "Simulasi Pembusukan",
+    },
+    busuk: {
+      // Hijau-biru (Image 1) — teal-500
+      bg: "#14b8a6",
+      shadow: "0 0 20px rgba(20, 184, 166, 0.40)",
+      label: "Tidak Layak",
+      desc: "Daging sudah mulai membusuk",
+      btn: "Reset ke Kondisi Segar",
+    },
+  };
+
+  let isSegar = true;
+
+  btn.addEventListener("click", () => {
+    isSegar = !isSegar;
+    const s = isSegar ? STATE.segar : STATE.busuk;
+
+    sensor.style.backgroundColor = s.bg;
+    sensor.style.boxShadow = s.shadow;
+    statusTx.textContent = s.label;
+    descTx.textContent = s.desc;
+    btn.textContent = s.btn;
+  });
+</script>
