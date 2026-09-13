@@ -18,9 +18,9 @@ const packages = [
   {
     id: "paket-personal",
     title: "Paket Personal",
-    quantity: "5 Strip",
-    price: "Rp 24.900",
-    value: "Paket Personal (5 Strip)",
+    quantity: "12 Strip",
+    price: "Rp 15.000",
+    value: "Paket Personal (12 Strip)",
     desc: "Ideal untuk kebutuhan rumah tangga dan pengujian awal kualitas daging atau ikan.",
     featured: false,
     icon: Home,
@@ -28,9 +28,9 @@ const packages = [
   {
     id: "paket-umkm",
     title: "UMKM & Resto",
-    quantity: "10 Strip",
-    price: "Rp 44.900",
-    value: "UMKM & Resto (10 Strip)",
+    quantity: "50 Strip",
+    price: "Rp 60.000",
+    value: "UMKM & Resto (50 Strip)",
     desc: "Cocok untuk usaha frozen food, katering, rumah makan, dan distribusi pangan.",
     featured: true,
     icon: Store,
@@ -49,23 +49,39 @@ const packages = [
 ---
 
 <section id="order" class="relative overflow-hidden py-24 bg-slate-50/50">
-  <div class="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-violet-50/30 -z-10"></div>
-  <div class="absolute left-0 top-0 h-72 w-72 rounded-full bg-violet-400/10 blur-3xl -z-10"></div>
-  <div class="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-teal-400/10 blur-3xl -z-10"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-violet-50/30 -z-10"
+  >
+  </div>
+  <div
+    class="absolute left-0 top-0 h-72 w-72 rounded-full bg-violet-400/10 blur-3xl -z-10"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-teal-400/10 blur-3xl -z-10"
+  >
+  </div>
 
   <div class="relative mx-auto max-w-7xl px-6">
     <div class="mx-auto mb-16 max-w-3xl text-center">
-      <span class="inline-flex items-center rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-700">
+      <span
+        class="inline-flex items-center rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-sm font-medium text-violet-700"
+      >
         Dapatkan Safestrip
       </span>
-      <h2 class="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+      <h2
+        class="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl"
+      >
         Mulai Pantau Kesegaran
-        <span class="bg-gradient-to-r from-violet-600 to-teal-600 bg-clip-text text-transparent">
+        <span
+          class="bg-gradient-to-r from-violet-600 to-teal-600 bg-clip-text text-transparent"
+        >
           Secara Visual
         </span>
       </h2>
       <p class="mt-5 text-lg leading-relaxed text-slate-600">
-        Pilih paket yang sesuai kebutuhan Anda atau hubungi tim kami untuk pilot testing, kolaborasi riset, dan kemitraan resmi.
+        Pilih paket yang sesuai kebutuhan Anda atau hubungi tim kami untuk pilot
+        testing, kolaborasi riset, dan kemitraan resmi.
       </p>
     </div>
 
@@ -99,7 +115,9 @@ const packages = [
                     <h3 class="text-lg font-bold text-slate-900 group-hover:text-violet-700 transition-colors">
                       {item.title}
                     </h3>
-                    <p class="text-sm font-medium text-slate-500">{item.quantity}</p>
+                    <p class="text-sm font-medium text-slate-500">
+                      {item.quantity}
+                    </p>
                   </div>
                 </div>
                 <div class="text-right shrink-0">
@@ -108,31 +126,47 @@ const packages = [
                   </div>
                 </div>
               </div>
-              <p class="mt-3 text-sm leading-relaxed text-slate-600">{item.desc}</p>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                {item.desc}
+              </p>
             </button>
           ))
         }
-        
+
         <div class="flex flex-wrap justify-center gap-2.5 mt-4">
-            <div class="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-100">
-                <ShieldCheck class="h-4 w-4 text-emerald-600" />
-                <span class="text-xs font-semibold text-slate-700">Food Grade</span>
-            </div>
-            <div class="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-100">
-                <Leaf class="h-4 w-4 text-emerald-600" />
-                <span class="text-xs font-semibold text-slate-700">Bahan Alami</span>
-            </div>
-            <div class="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-100">
-                <BadgeCheck class="h-4 w-4 text-emerald-600" />
-                <span class="text-xs font-semibold text-slate-700">Mudah Diaplikasikan</span>
-            </div>
+          <div
+            class="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-100"
+          >
+            <ShieldCheck class="h-4 w-4 text-emerald-600" />
+            <span class="text-xs font-semibold text-slate-700">Food Grade</span>
+          </div>
+          <div
+            class="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-100"
+          >
+            <Leaf class="h-4 w-4 text-emerald-600" />
+            <span class="text-xs font-semibold text-slate-700">Bahan Alami</span
+            >
+          </div>
+          <div
+            class="flex items-center gap-1.5 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-100"
+          >
+            <BadgeCheck class="h-4 w-4 text-emerald-600" />
+            <span class="text-xs font-semibold text-slate-700"
+              >Mudah Diaplikasikan</span
+            >
+          </div>
         </div>
       </div>
 
-      <div class="rounded-[32px] border border-slate-200/80 bg-white p-8 shadow-xl relative">
-        <h3 class="text-2xl font-bold text-slate-900">Form Pemesanan & Kemitraan</h3>
+      <div
+        class="rounded-[32px] border border-slate-200/80 bg-white p-8 shadow-xl relative"
+      >
+        <h3 class="text-2xl font-bold text-slate-900">
+          Form Pemesanan & Kemitraan
+        </h3>
         <p class="mt-2 text-slate-600 text-sm">
-          Lengkapi data di bawah ini. Tim kami akan segera memproses permintaan Anda melalui jalur distribusi resmi.
+          Lengkapi data di bawah ini. Tim kami akan segera memproses permintaan
+          Anda melalui jalur distribusi resmi.
         </p>
 
         <form
@@ -141,11 +175,17 @@ const packages = [
           method="POST"
           class="mt-6 space-y-4"
         >
-          <input type="hidden" name="_next" value="https://safestrip-three.vercel.app/#order">
+          <input
+            type="hidden"
+            name="_next"
+            value="https://safestrip-three.vercel.app/#order"
+          />
           <input type="text" name="_gotcha" style="display:none" />
 
           <div class="relative">
-            <User class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+            <User
+              class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
+            />
             <input
               type="text"
               name="nama_lengkap"
@@ -157,7 +197,9 @@ const packages = [
 
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="relative">
-              <Mail class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Mail
+                class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
+              />
               <input
                 type="email"
                 name="email"
@@ -166,9 +208,11 @@ const packages = [
                 class="w-full rounded-2xl border border-slate-200 pl-12 pr-4 py-3 outline-hidden transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100/50 text-slate-800 bg-slate-50/50 focus:bg-white"
               />
             </div>
-            
+
             <div class="relative">
-              <Phone class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Phone
+                class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400"
+              />
               <input
                 type="tel"
                 name="whatsapp"
@@ -181,7 +225,9 @@ const packages = [
 
           <div class="grid gap-4 sm:grid-cols-3">
             <div class="relative sm:col-span-2">
-              <Package class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 pointer-events-none" />
+              <Package
+                class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 pointer-events-none"
+              />
               <select
                 id="package-select"
                 name="pilihan_paket"
@@ -189,17 +235,37 @@ const packages = [
                 class="w-full rounded-2xl border border-slate-200 pl-12 pr-10 py-3 outline-hidden transition focus:border-violet-500 focus:ring-4 focus:ring-violet-100/50 text-slate-700 bg-slate-50/50 focus:bg-white appearance-none cursor-pointer font-medium"
               >
                 <option value="" disabled>Pilih Paket</option>
-                <option value="Paket Personal (5 Strip)">Paket Personal (5 Strip)</option>
-                <option value="UMKM & Resto (10 Strip)" selected>UMKM & Resto (10 Strip)</option>
-                <option value="Research Partner (Custom)">Research Partner (Custom)</option>
+                <option value="Paket Personal (12 Strip)"
+                  >Paket Personal (12 Strip)</option
+                >
+                <option value="UMKM & Resto (50 Strip)" selected
+                  >UMKM & Resto (50 Strip)</option
+                >
+                <option value="Research Partner (Custom)"
+                  >Research Partner (Custom)</option
+                >
               </select>
-              <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              <div
+                class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  ><path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path></svg
+                >
               </div>
             </div>
 
             <div class="relative">
-              <ShoppingCart class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 pointer-events-none" />
+              <ShoppingCart
+                class="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 pointer-events-none"
+              />
               <input
                 type="number"
                 name="jumlah_pesanan"
@@ -213,7 +279,9 @@ const packages = [
           </div>
 
           <div class="relative">
-            <MessageSquare class="absolute left-4 top-4 h-5 w-5 text-slate-400 pointer-events-none" />
+            <MessageSquare
+              class="absolute left-4 top-4 h-5 w-5 text-slate-400 pointer-events-none"
+            />
             <textarea
               rows="3"
               name="catatan"
@@ -231,12 +299,16 @@ const packages = [
         </form>
 
         <div class="mt-6 pt-4 border-t border-slate-100 text-center">
-          <p class="text-xs font-semibold text-violet-700 bg-violet-50 inline-block py-1.5 px-4 rounded-full">
+          <p
+            class="text-xs font-semibold text-violet-700 bg-violet-50 inline-block py-1.5 px-4 rounded-full"
+          >
             ⚡ Tim kami akan merespons dalam waktu 1x24 jam.
           </p>
-          
+
           <div class="mt-4">
-            <p class="text-xs font-medium text-slate-400 mb-2">Atau hubungi via chat interaktif:</p>
+            <p class="text-xs font-medium text-slate-400 mb-2">
+              Atau hubungi via chat interaktif:
+            </p>
             <a
               href="https://wa.me/6285755554151"
               target="_blank"
@@ -244,7 +316,9 @@ const packages = [
               class="flex items-center justify-center gap-2 rounded-2xl border border-emerald-200 bg-emerald-50/50 px-6 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100/80 active:scale-[0.99]"
             >
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.93 0c3.165.001 6.14 1.233 8.377 3.469 2.237 2.235 3.469 5.211 3.469 8.378 0 6.534-5.337 11.883-11.87 11.883-2.001-.001-3.971-.51-5.713-1.479L0 24zm6.59-4.846c1.6.95 3.473 1.452 5.38 1.453h.005c5.454 0 9.895-4.442 9.898-9.896.002-2.642-1.03-5.125-2.895-6.995C17.062 1.836 14.583 1.05 11.93 1.05c-5.46 0-9.902 4.441-9.905 9.896-.001 1.993.521 3.942 1.51 5.67l-.102.553L2.395 21.61l4.368-1.144-.116-.712z"/>
+                <path
+                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.93 0c3.165.001 6.14 1.233 8.377 3.469 2.237 2.235 3.469 5.211 3.469 8.378 0 6.534-5.337 11.883-11.87 11.883-2.001-.001-3.971-.51-5.713-1.479L0 24zm6.59-4.846c1.6.95 3.473 1.452 5.38 1.453h.005c5.454 0 9.895-4.442 9.898-9.896.002-2.642-1.03-5.125-2.895-6.995C17.062 1.836 14.583 1.05 11.93 1.05c-5.46 0-9.902 4.441-9.905 9.896-.001 1.993.521 3.942 1.51 5.67l-.102.553L2.395 21.61l4.368-1.144-.116-.712z"
+                ></path>
               </svg>
               Konsultasi Instan via WhatsApp
             </a>
@@ -265,46 +339,48 @@ const packages = [
 
 <script>
   function initOrderFormLogic() {
-    const cards = document.querySelectorAll('.package-card');
-    const select = document.getElementById('package-select') as HTMLSelectElement;
-    
+    const cards = document.querySelectorAll(".package-card");
+    const select = document.getElementById(
+      "package-select",
+    ) as HTMLSelectElement;
+
     if (!cards.length || !select) return;
 
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
         // 1. Ambil nilai data atribut paket
-        const targetValue = card.getAttribute('data-package-value');
+        const targetValue = card.getAttribute("data-package-value");
         if (!targetValue) return;
 
         // 2. Perbarui nilai pada elemen select HTML form asli
         select.value = targetValue;
 
         // 3. Mutasi visualisasi active class border
-        cards.forEach(c => {
-          c.classList.remove('border-violet-400', 'ring-4', 'selected-card');
-          c.classList.add('border-slate-200/80');
+        cards.forEach((c) => {
+          c.classList.remove("border-violet-400", "ring-4", "selected-card");
+          c.classList.add("border-slate-200/80");
         });
 
-        card.classList.remove('border-slate-200/80');
-        card.classList.add('border-violet-400', 'ring-4', 'selected-card');
+        card.classList.remove("border-slate-200/80");
+        card.classList.add("border-violet-400", "ring-4", "selected-card");
       });
     });
 
     // Sinkronisasi balik jika pengguna mengubah opsi langsung dari drop-down select
-    select.addEventListener('change', () => {
-      cards.forEach(card => {
-        if (card.getAttribute('data-package-value') === select.value) {
-          card.classList.remove('border-slate-200/80');
-          card.classList.add('border-violet-400', 'ring-4', 'selected-card');
+    select.addEventListener("change", () => {
+      cards.forEach((card) => {
+        if (card.getAttribute("data-package-value") === select.value) {
+          card.classList.remove("border-slate-200/80");
+          card.classList.add("border-violet-400", "ring-4", "selected-card");
         } else {
-          card.classList.remove('border-violet-400', 'ring-4', 'selected-card');
-          card.classList.add('border-slate-200/80');
+          card.classList.remove("border-violet-400", "ring-4", "selected-card");
+          card.classList.add("border-slate-200/80");
         }
       });
     });
   }
 
   // Daftarkan ke dalam siklus hidup transisi Astro untuk mencegah kegagalan SPA
-  document.addEventListener('DOMContentLoaded', initOrderFormLogic);
-  document.addEventListener('astro:page-load', initOrderFormLogic);
+  document.addEventListener("DOMContentLoaded", initOrderFormLogic);
+  document.addEventListener("astro:page-load", initOrderFormLogic);
 </script>
